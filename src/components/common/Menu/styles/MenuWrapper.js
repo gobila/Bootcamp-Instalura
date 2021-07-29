@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const MenuWrapper = styled.nav`
-    font-family: 'Rubik', sans-serif;
+    /* font-family: 'Rubik', sans-serif; */
     display: flex;
     align-items: center;
     justify-content: space-between;
