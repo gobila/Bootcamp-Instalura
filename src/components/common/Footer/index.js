@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {MobileIcon} from '../../../assets/Logo'
+import Logo, { MobileIcon } from '../../../assets/Logo'
 
 const FooterWrapper = styled.footer`
   padding: 14px;
@@ -29,13 +29,13 @@ export default  function Footer(props){
   return(
     <FooterWrapper {...props}>
       <a href="#">
-        <img src={MobileIcon}/>
+        <MobileIcon/>
       </a>
       <p>
-        Orgulhosamente criado durante
-        {'27/07/2021'}
+        Orgulhosamente criado durante 
+        {' 27/07/2021 '}
         a
-        {'20/10/2021'}
+        {' 20/10/2021 '}
         <a href="https://www.alura.com.br/">
           <span>Bootcamp Alura JAM Stack</span>
         </a>

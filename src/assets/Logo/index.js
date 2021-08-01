@@ -1,6 +1,6 @@
 export function MobileIcon(){
     return(
-        <svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="191" height="48" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect y="0.997513" width="400" height="399.003" rx="90" fill="url(#paint0_linear)"/>
         <rect x="54.5" y="55.3928" width="290" height="289.214" rx="77.5" stroke="white" stroke-width="25"/>
         <ellipse cx="283" cy="120.698" rx="20" ry="19.9501" fill="white"/>
