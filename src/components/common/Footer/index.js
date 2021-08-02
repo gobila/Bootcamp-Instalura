@@ -29,7 +29,7 @@ export default  function Footer(props){
   return(
     <FooterWrapper {...props}>
       <a href="#">
-        <MobileIcon/>
+        {/* <MobileIcon/> */}
       </a>
       <p>
         Orgulhosamente criado durante 
