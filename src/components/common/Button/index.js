@@ -2,6 +2,7 @@ import styled, {css} from 'styled-components';
 import get from 'lodash/get'
 import { TextStyleVariantsMap } from '../../foundation/Text';
 import { breakpointsMedia } from '../../theme/utils/breakpointsMedia';
+import { propsToStyle } from '../../theme/utils/propsToStyle';
 
 
 const ButtonGhost = css`
@@ -44,4 +45,7 @@ export const Button = styled.button`
             ${TextStyleVariantsMap.paragraph1}
         `,
     })}
+
+    ${propsToStyle('margin')}
+    ${propsToStyle('display')}
 `;
