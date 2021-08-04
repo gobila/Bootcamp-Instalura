@@ -28,4 +28,8 @@ export const GlobalStyle = createGlobalStyle`
         display: flex;
         flex-direction: column;
     }
+    /* Img no meu estilo */
+  img{
+        width: 100%;
+  }
 `
