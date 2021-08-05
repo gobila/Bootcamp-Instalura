@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   ${normalize}
 
-  body {
+  html, body {
     margin: 0;
     padding: 0;
     font-family: ${({theme})=> theme.fontFamily};

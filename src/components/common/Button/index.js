@@ -40,6 +40,7 @@ export const Button = styled.button`
     ${breakpointsMedia({
         xs: css`
             ${TextStyleVariantsMap.smallestException}
+            padding: 8px 16px;
         `,
         md: css`
             ${TextStyleVariantsMap.paragraph1}

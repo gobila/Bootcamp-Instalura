@@ -36,10 +36,14 @@ MenuWrapper.Left = styled.div`
   order: 1;
   ${breakpointsMedia({
     xs: css`
-        /* width: 100%; */
+        max-width: calc(100% *0.4);
+        margin:0px
+        justify-content: flex-start;
         height: calc(100%);
-        margin:auto;
         order: 1;
+        svg{
+          width: calc(100%);
+        }
     `,
     md: css`
       order: initial;
@@ -111,7 +115,12 @@ MenuWrapper.Right = styled.div`
   justify-content: flex-end;
   ${breakpointsMedia({
     xs: css`
-      justify-content: center;
+      justify-content: flex-end;
+      order: 2;
+    `,
+    sm: css`
+      width: calc(100% *0.4);
+      justify-content: flex-end;
       order: 2;
     `,
     md: css`
