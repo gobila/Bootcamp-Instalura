@@ -1,7 +1,7 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import normalize from 'styled-normalize';
-import theme from '../theme';
+import theme from '.';
 
 export const GlobalStyle = createGlobalStyle`
   *{
@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
   html, body {
     margin: 0;
     padding: 0;
-    font-family: ${({theme})=> theme.fontFamily};
+    font-family: ${({ theme }) => theme.fontFamily};
   }
 
   /* / * Full height layout */ */
@@ -29,7 +29,7 @@ export const GlobalStyle = createGlobalStyle`
         flex-direction: column;
     }
     /* Img no meu estilo */
-  img{
+  /* img{
         width: 100%;
-  }
-`
+  } */
+`;

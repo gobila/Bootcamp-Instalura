@@ -1,25 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, {css}from 'styled-components';
-import {propsToStyle} from '../../theme/utils/propsToStyle'
+import styled, { css } from 'styled-components';
+import { propsToStyle } from '../../theme/utils/propsToStyle';
 
-export const TextStyleVariantsMap={
-    paragraph1: css`
-        font-size:${({theme})=>theme.typographyVariants.paragraph1.fontSize};
-        font-weight:${({theme})=>theme.typographyVariants.paragraph1.fontWeight};
-        line-height:${({theme})=>theme.typographyVariants.paragraph1.lineHeight};
+export const TextStyleVariantsMap = {
+  paragraph1: css`
+        font-size:${({ theme }) => theme.typographyVariants.paragraph1.fontSize};
+        font-weight:${({ theme }) => theme.typographyVariants.paragraph1.fontWeight};
+        line-height:${({ theme }) => theme.typographyVariants.paragraph1.lineHeight};
     `,
-    smallestException: css`
-        font-size:${({theme})=>theme.typographyVariants.smallestException.fontSize};
-        font-weight:${({theme})=>theme.typographyVariants.smallestException.fontWeight};
-        line-height:${({theme})=>theme.typographyVariants.smallestException.lineHeight};
+  smallestException: css`
+        font-size:${({ theme }) => theme.typographyVariants.smallestException.fontSize};
+        font-weight:${({ theme }) => theme.typographyVariants.smallestException.fontWeight};
+        line-height:${({ theme }) => theme.typographyVariants.smallestException.lineHeight};
     `,
 
-}
-
+};
 
 const TextBase = styled.span`
-    ${(props)=>TextStyleVariantsMap[props.variant]}
+    ${(props) => TextStyleVariantsMap[props.variant]}
     ${propsToStyle('textAlign')}
     ${propsToStyle('marginBottom')}
     ${propsToStyle('margin')}
@@ -27,26 +26,28 @@ const TextBase = styled.span`
 
 `;
 
-export default function Text({tag, variant, children, ...props}){
-    return(
-        <TextBase
-            as={tag}
-            variant={variant}
-            {...props}
-        >
-            {children}
-        </TextBase>
+export default function Text({
+  tag, variant, children, ...props
+}) {
+  return (
+    <TextBase
+      as={tag}
+      variant={variant}
+      {...props}
+    >
+      {children}
+    </TextBase>
 
-    )
+  );
 }
 
-Text.propsType={
-    tag:PropTypes.string.isRequired,
-    variant:PropTypes.string,
-    children:PropTypes.node.isRequired,
-}
+Text.propsType = {
+  tag: PropTypes.string.isRequired,
+  variant: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
 
 Text.defaultProps = {
-    tag:"span",
-    variant:'paragraph1',
-}
+  tag: 'span',
+  variant: 'paragraph1',
+};

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Logo, { MobileIcon } from '../../../assets/Logo'
 
 const FooterWrapper = styled.footer`
   padding: 14px;
@@ -25,21 +24,21 @@ const FooterWrapper = styled.footer`
   }
 `;
 
-export default  function Footer(props){
-  return(
+export default function Footer(props) {
+  return (
     <FooterWrapper {...props}>
-      <a href="#">
-        {/* <MobileIcon/> */}
+      <a href="https://www.alura.com.br/">
+        <img src="https://www.alura.com.br/assets/img/alura-logo.svg" alt="Logo Alura" />
       </a>
       <p>
-        Orgulhosamente criado durante 
-        {' 27/07/2021 '}
-        a
-        {' 20/10/2021 '}
+        Orgulhosamente criado durante
+        {' '}
+        o
+        {' '}
         <a href="https://www.alura.com.br/">
           <span>Bootcamp Alura JAM Stack</span>
         </a>
       </p>
     </FooterWrapper>
-  )
+  );
 }

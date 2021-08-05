@@ -1,18 +1,17 @@
-import styled, {css} from 'styled-components';
-import get from 'lodash/get'
+import styled, { css } from 'styled-components';
+import get from 'lodash/get';
 import { TextStyleVariantsMap } from '../../foundation/Text';
 import { breakpointsMedia } from '../../theme/utils/breakpointsMedia';
 import { propsToStyle } from '../../theme/utils/propsToStyle';
 
-
 const ButtonGhost = css`
-    color: ${(props)=>get(props.theme, `colors.${props.variant}.color`)};
+    color: ${(props) => get(props.theme, `colors.${props.variant}.color`)};
     background-color: transparent;
-`
+`;
 const ButtonDefault = css`
-    color:${(props)=>get(props.theme, `colors.${props.variant}.contrastText`)};
-    background-color: ${(props)=>get(props.theme, `colors.${props.variant}.color`)};
-`
+    color:${(props) => get(props.theme, `colors.${props.variant}.contrastText`)};
+    background-color: ${(props) => get(props.theme, `colors.${props.variant}.color`)};
+`;
 
 export const Button = styled.button`
     border: 0;
@@ -24,29 +23,31 @@ export const Button = styled.button`
     /* ${TextStyleVariantsMap.smallestException} */
     /* color: white;
     background-color: #D7385E; */
-    ${function(props){
-        if(props.ghost){
-            return ButtonGhost;
-        }
-        return ButtonDefault;
-    }}
-    transition: opacity${({theme}) => theme.transition};
-    border-radius: ${({theme})=>{ theme.borderRadius}};
+    ${function (props) {
+    if (props.ghost) {
+      return ButtonGhost;
+    }
+    return ButtonDefault;
+  }}
+    transition: opacity${({ theme }) => theme.transition};
+    border-radius: ${({ theme }) => theme.borderRadius};
     &:hover,
     &:focus {
         opacity: .5;
     }
 
     ${breakpointsMedia({
-        xs: css`
+    xs: css`
             ${TextStyleVariantsMap.smallestException}
             padding: 8px 16px;
         `,
-        md: css`
+    md: css`
             ${TextStyleVariantsMap.paragraph1}
         `,
-    })}
+  })}
 
     ${propsToStyle('margin')}
     ${propsToStyle('display')}
 `;
+
+export default Button
