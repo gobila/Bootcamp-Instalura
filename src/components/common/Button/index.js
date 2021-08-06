@@ -50,4 +50,4 @@ export const Button = styled.button`
     ${propsToStyle('display')}
 `;
 
-export default Button
+export default Button;
