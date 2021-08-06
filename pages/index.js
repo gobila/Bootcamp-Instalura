@@ -37,7 +37,7 @@ export default function Home() {
 
         <Grid.Row>
           <Grid.Col
-            offset={{xs: 0, md: 1}}
+            offset={{ xs: 0, md: 1 }}
             value={{ xs: 12, md: 5 }}
             display="flex"
             alignItems="flex-start"
