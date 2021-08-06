@@ -23,7 +23,7 @@ export const Button = styled.button`
     /* ${TextStyleVariantsMap.smallestException} */
     /* color: white;
     background-color: #D7385E; */
-    ${function (props) {
+    ${function BtnProps(props) {
     if (props.ghost) {
       return ButtonGhost;
     }
