@@ -19,5 +19,6 @@ export function propsToStyle(propsName) {
         xl: { [propsName]: propsValue.xl },
       });
     }
+    return 0;
   };
 }
