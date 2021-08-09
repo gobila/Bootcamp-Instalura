@@ -1,19 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '../src/components/common/Button';
 import Footer from '../src/components/common/Footer';
 import Menu from '../src/components/common/Menu';
 import Text from '../src/components/foundation/Text';
 import { Grid } from '../src/components/foundation/layout/Grid';
 import { Box } from '../src/components/foundation/layout/Box';
+import Modal from '../src/components/common/Modal';
 
 export default function Home() {
-  // const divStyle = {
-  //   flex: '1',
-  //   display: 'flex',
-  //   flexWrap: 'wrap',
-  //   flexDirection: 'column',
-  //   justifyContent: 'space-between',
-  // };
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <Box
       flex={1}
@@ -25,6 +20,23 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
+      {/* pegando o valor de isOpen e modal para execultar o modal */}
+      {/* {isModalOpen && <Modal />} */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+        }}
+      >
+        {(propsDoModal) => (// usando () para nao precisar passar o return()
+          <Box
+            backgroundColor="white"
+            {...propsDoModal}
+          >
+            <div>hahahaha</div>
+          </Box>
+        )}
+      </Modal>
 
       <Menu />
       {/* COntainer baseados em grid */}
@@ -74,6 +86,9 @@ export default function Home() {
                 md: 'initial',
               }}
               display="block"
+              onClick={() => {
+                setIsModalOpen(!isModalOpen);
+              }}
             >
               Cadastrar
             </Button>
