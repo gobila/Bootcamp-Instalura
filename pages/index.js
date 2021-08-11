@@ -33,21 +33,24 @@ export default function Home() {
             backgroundColor="white"
             {...propsDoModal}
           >
-            <div>hahahaha</div>
+            <div style={{ padding: '20px', width: '30vw' }}>
+              Cadastro de perfil
+            </div>
           </Box>
         )}
       </Modal>
-
+      {/* Menu */}
       <Menu />
-      {/* COntainer baseados em grid */}
+      {/* COntainer baseados em grid do conteudo principal */}
       <Grid.Container
         marginTop={{
           xs: '32px',
           md: '60px',
         }}
       >
-
+        {/* conteudo principal */}
         <Grid.Row>
+          {/* Imagem do Cage */}
           <Grid.Col
             offset={{ xs: 0, md: 1 }}
             value={{ xs: 12, md: 5 }}
@@ -93,6 +96,7 @@ export default function Home() {
               Cadastrar
             </Button>
           </Grid.Col>
+          {/* Imagem do Cage */}
           <Grid.Col
             value={{ xs: 12, md: 6 }}
           >

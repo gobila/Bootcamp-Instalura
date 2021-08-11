@@ -39,7 +39,9 @@ export default function Menu() {
         <Button ghost variant="primary.main">
           Entrar
         </Button>
-        <Button variant="primary.main">
+        <Button
+          variant="primary.main"
+        >
           Cadastrar
         </Button>
       </MenuWrapper.Right>
