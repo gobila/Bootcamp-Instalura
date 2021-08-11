@@ -1,6 +1,7 @@
 import { breakpointsMedia } from './breakpointsMedia';
 
 export function propsToStyle(propsName) {
+  // eslint-disable-next-line func-names
   return function (props) {
     const propsValue = props[propsName];
     // vendo sé string ou numero
@@ -19,6 +20,6 @@ export function propsToStyle(propsName) {
         xl: { [propsName]: propsValue.xl },
       });
     }
-    return 0;
+    return '';
   };
 }
