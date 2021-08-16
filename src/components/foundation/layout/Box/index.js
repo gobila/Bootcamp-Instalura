@@ -11,4 +11,7 @@ export const Box = styled.div`
     ${propsToStyle('backgroundImage')};
     ${propsToStyle('backgroundRepeat')};
     ${propsToStyle('backgroundPosition')};
+//modulo 2 aula 3 add
+    ${propsToStyle('boxShadow')}
+    ${propsToStyle('padding')}
 `;

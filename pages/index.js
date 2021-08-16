@@ -6,6 +6,7 @@ import Text from '../src/components/foundation/Text';
 import { Grid } from '../src/components/foundation/layout/Grid';
 import { Box } from '../src/components/foundation/layout/Box';
 import Modal from '../src/components/common/Modal';
+import FormCadastro from '../src/components/patterns/FormCadastro';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,14 +30,15 @@ export default function Home() {
         }}
       >
         {(propsDoModal) => (// usando () para nao precisar passar o return()
-          <Box
-            backgroundColor="white"
-            {...propsDoModal}
-          >
-            <div style={{ padding: '20px', width: '30vw' }}>
-              Cadastro de perfil
-            </div>
-          </Box>
+          // <Box
+          //   backgroundColor="white"
+          //   {...propsDoModal}
+          // >
+          //   <div style={{ padding: '20px', width: '30vw' }}>
+          //     Cadastro de perfil
+          //   </div>
+          // </Box>
+          <FormCadastro propsDoModal={propsDoModal} />
         )}
       </Modal>
       {/* Menu */}
