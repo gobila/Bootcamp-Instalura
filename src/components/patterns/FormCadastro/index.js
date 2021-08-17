@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Lottie } from '@crello/react-lottie';
+import Aproved from '../../../assets/animation/aproved.json';
+import Denied from '../../../assets/animation/denied.json';
 // eslint-disable-next-line import/no-named-as-default
 import Button from '../../common/Button';
 import TextField from '../../forms/TextFild';
@@ -6,10 +9,19 @@ import Text from '../../foundation/Text';
 import { Box } from '../../foundation/layout/Box';
 import { Grid } from '../../foundation/layout/Grid';
 
+const formStates = {
+  DEFAULT: 'DEFAULT',
+  LOADING: 'LOADING',
+  DONE: 'DONE',
+  ERROR: 'ERROR',
+};
+
 function FormContent() {
+  const [isFormSubmited, setIsFormSubmited] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState(formStates.DEFAULT);
   const [userInfo, setUserInfo] = useState({
-    usuario: 'moises',
-    email: 'moises@moises.com',
+    usuario: '',
+    nome: '',
   });
 
   function handleChange(event) {
@@ -20,11 +32,37 @@ function FormContent() {
     });
   }
 
-  const isFormValid = userInfo.usuario.length === 0 || userInfo.email.length === 0;
+  const isFormValid = userInfo.usuario.length === 0 || userInfo.nome.length === 0;
 
   return (
     <form onSubmit={(event) => {
       event.preventDefault();
+      setIsFormSubmited(true);// setando true para o formulario ficar disponvel para envio
+
+      const userDTO = {
+        username: userInfo.usuario,
+        name: userInfo.nome,
+      };
+
+      fetch('https://instalura-api.vercel.app/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userDTO),
+      }).then((responseServer) => {
+        if (responseServer.ok) {
+          return responseServer.json();
+        }
+        throw new Error('Não foi possivel cadastrar usuario');
+      })
+        .then((responseConverted) => {
+          console.log(responseConverted);
+          setSubmissionStatus(formStates.DONE);
+        }).catch((error) => {
+          console.log(error);
+          setSubmissionStatus(formStates.ERROR);
+        });
     }}
     >
       <Text
@@ -45,9 +83,9 @@ function FormContent() {
       </Text>
       <div>
         <TextField
-          placeholder="E-mail"
-          name="email"
-          value={userInfo.email}
+          placeholder="Nome"
+          name="nome"
+          value={userInfo.nome}
           onChange={handleChange}
         />
       </div>
@@ -67,6 +105,33 @@ function FormContent() {
       >
         Cadastrar
       </Button>
+      {isFormSubmited && submissionStatus === formStates.DONE && (
+        <Box
+          display="flex"
+          justifyContent="center"
+        >
+          <Lottie
+            width="150px"
+            height="150px"
+            className="lottie-container basic"
+            config={{ animationData: Aproved, loop: false, autoplay: true }}
+          />
+        </Box>
+      )}
+      {isFormSubmited && submissionStatus === formStates.ERROR && (
+        <Box
+          display="flex"
+          justifyContent="center"
+        >
+          <Lottie
+            width="150px"
+            height="150px"
+            className="lottie-container basic"
+            config={{ animationData: Denied, loop: false, autoplay: true }}
+          />
+        </Box>
+      )}
+
     </form>
   );
 }
