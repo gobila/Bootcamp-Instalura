@@ -4,6 +4,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start"
+    "lint": "eslint --ignore-path .gitignore ."
   },
   "dependencies": {
     "@crello/react-lottie": "0.0.11",
