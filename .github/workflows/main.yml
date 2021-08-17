@@ -28,5 +28,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run NodeJS version
         run: node -v
-      - name: Run Linter
+      - name: Install Linter
+        run: yarn install
+     - name: Run Linter
         run: yarn lint
