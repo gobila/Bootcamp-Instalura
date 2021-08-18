@@ -57,9 +57,11 @@ function FormContent() {
         throw new Error('Não foi possivel cadastrar usuario');
       })
         .then((responseConverted) => {
+          // eslint-disable-next-line no-console
           console.log(responseConverted);
           setSubmissionStatus(formStates.DONE);
         }).catch((error) => {
+          // eslint-disable-next-line no-console
           console.log(error);
           setSubmissionStatus(formStates.ERROR);
         });
