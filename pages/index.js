@@ -42,7 +42,7 @@ export default function Home() {
         )}
       </Modal>
       {/* Menu */}
-      <Menu />
+      <Menu onCadastrarClick={() => setIsModalOpen(true)} />
       {/* COntainer baseados em grid do conteudo principal */}
       <Grid.Container
         marginTop={{

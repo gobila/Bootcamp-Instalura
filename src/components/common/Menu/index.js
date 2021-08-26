@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { MenuWrapper } from './styles/MenuWrapper';
 import Logo from '../../../assets/Logo';
 import { Button } from '../Button';
 import Text from '../../foundation/Text';
 
-export default function Menu() {
+export default function Menu({ onCadastrarClick }) {
   const link = [{
     texto: 'Home',
     url: '/',
@@ -13,7 +14,7 @@ export default function Menu() {
     url: '/faq',
   }, {
     texto: 'Sobre',
-    url: '/sobre',
+    url: '/about',
   },
   ];
   return (
@@ -28,6 +29,14 @@ export default function Menu() {
       <MenuWrapper.Central>
         {link.map((i) => (
           <li key={i.url}>
+            {/* usando o NextLink do next/link para fazer o roteamento */}
+            {/* <NextLink href={link.url}>
+              <a>
+              {link.texto}
+              <a>
+            </NextLink> */}
+            {/* Aqui o componete Text se comporta como o NextLink pois faz uma verificação
+                atras do atributo href, vê componets Link e Text */}
             <Text tag="a" variant="smallestException" href={i.url}>
               {i.texto}
             </Text>
@@ -36,11 +45,12 @@ export default function Menu() {
       </MenuWrapper.Central>
       {/* login/cadastro */}
       <MenuWrapper.Right>
-        <Button ghost variant="primary.main">
+        <Button ghost variant="primary.main" href="/app/login">
           Entrar
         </Button>
         <Button
           variant="primary.main"
+          onClick={onCadastrarClick}
         >
           Cadastrar
         </Button>
@@ -48,3 +58,7 @@ export default function Menu() {
     </MenuWrapper>
   );
 }
+
+Menu.propTypes = {
+  onCadastrarClick: PropTypes.func.isRequired,
+};
