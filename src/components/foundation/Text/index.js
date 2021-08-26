@@ -4,6 +4,7 @@ import get from 'lodash/get';
 import styled, { css } from 'styled-components';
 import { propsToStyle } from '../../theme/utils/propsToStyle';
 import { breakpointsMedia } from '../../theme/utils/breakpointsMedia';
+import Link from '../../common/Link';
 
 export const TextStyleVariantsMap = {
   paragraph1: css`
@@ -46,8 +47,22 @@ const TextBase = styled.span`
 `;
 
 export default function Text({
-  tag, variant, children, ...props
+  tag, variant, children, href, ...props
 }) {
+  // passando um if para se algum Text tiver um href
+  // se tiver ele chama o componet Link que tem o next/Link
+  if (href) {
+    return (
+      <TextBase
+        as={Link}
+        variant={variant}
+        {...props}
+        href={href}
+      >
+        {children}
+      </TextBase>
+    );
+  }
   return (
     <TextBase
       as={tag}
@@ -64,10 +79,12 @@ Text.propsType = {
   tag: PropTypes.string.isRequired,
   variant: PropTypes.string,
   children: PropTypes.node,
+  href: PropTypes.string,
 };
 
 Text.defaultProps = {
   tag: 'span',
   variant: 'paragraph1',
   children: null, // por causa da teag input que nao tem filho de fato
+  href: '',
 };
