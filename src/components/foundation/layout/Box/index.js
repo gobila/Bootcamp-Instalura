@@ -14,4 +14,13 @@ export const Box = styled.div`
 //modulo 2 aula 3 add
     ${propsToStyle('boxShadow')}
     ${propsToStyle('padding')}
+//modulo 3 aula 2 add
+    ${propsToStyle('width')}
+    ${propsToStyle('listStyle')}
+    ${propsToStyle('margin')}
+    ${propsToStyle('marginLeft')}
+    ${propsToStyle('marginTop')}
+    ${propsToStyle('marginBottom')}
+    ${propsToStyle('marginRight')}
+    ${({ theme, borderRadiusTheme }) => borderRadiusTheme && `border-radius: ${theme.borderRadius}`}
 `;
