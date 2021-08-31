@@ -3,7 +3,7 @@ import { Lottie } from '@crello/react-lottie';
 import Aproved from '../../../assets/animation/aproved.json';
 import Denied from '../../../assets/animation/denied.json';
 // eslint-disable-next-line import/no-named-as-default
-import Button from '../../common/Button';
+import { Button } from '../../common/Button';
 import TextField from '../../forms/TextFild';
 import Text from '../../foundation/Text';
 import { Box } from '../../foundation/layout/Box';
@@ -83,22 +83,22 @@ function FormContent() {
         Você está a um passo de saber tudo o que está
         rolando no bairro, complete seu cadastro agora!
       </Text>
-      <div>
+      <Box>
         <TextField
           placeholder="Nome"
           name="nome"
           value={userInfo.nome}
           onChange={handleChange}
         />
-      </div>
-      <div>
+      </Box>
+      <Box>
         <TextField
           placeholder="Usuario"
           name="usuario"
           value={userInfo.usuario}
           onChange={handleChange}
         />
-      </div>
+      </Box>
       <Button
         variant="primary.main"
         type="submit"
