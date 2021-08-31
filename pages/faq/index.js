@@ -1,21 +1,20 @@
 import React from 'react';
 import FAQScreen from '../../src/components/common/screens/FAQScreen';
+import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
 
-export default function FAQPage({ faqCategories }) {
-  // const [faqCategories, setFaqCategories] = useState('');
-  // useEffect(() => {
-  //   fetch('https://instalura-api.vercel.app/api/content/faq')
-  //     .then((respostaDoServer) => respostaDoServer.json())
-  //     .then((respostaConvertida) => respostaConvertida.data)
-  //     .then((resposta) => {
-  //       console.log('faqCategories', resposta);
-  //       setFaqCategories(resposta);
-  //     });
-  // }, []);
+function FAQPage({ faqCategories }) {
   return (
     <FAQScreen faqCategories={faqCategories} />
   );
 }
+
+export default websitePageHOC(FAQPage, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'Perguntas frequentes',
+    },
+  },
+});
 
 // para criar paginas estaticas no NextJs
 export async function getStaticProps() {
