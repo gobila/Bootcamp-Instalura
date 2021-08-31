@@ -91,7 +91,7 @@ function FormContent() {
           onChange={handleChange}
         />
       </div>
-      <Box>
+      <div>
         <TextField
           placeholder="Usuario"
           name="usuario"
