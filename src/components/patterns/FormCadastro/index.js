@@ -83,7 +83,7 @@ function FormContent() {
         Você está a um passo de saber tudo o que está
         rolando no bairro, complete seu cadastro agora!
       </Text>
-      <Box>
+      <div>
         <TextField
           placeholder="Nome"
           name="nome"
