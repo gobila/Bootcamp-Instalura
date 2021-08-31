@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Lottie } from '@crello/react-lottie';
 import Aproved from '../../../assets/animation/aproved.json';
 import Denied from '../../../assets/animation/denied.json';
@@ -23,14 +23,25 @@ function FormContent() {
     usuario: '',
     nome: '',
   });
-
-  function handleChange(event) {
+  // FUNÇÃO NOVA APOS ATT DO ESLIT
+  // USANDO O useCallback VISANDO PERFORMACE
+  const handleChange = useCallback((event) => {
     const fieldName = event.target.getAttribute('name');
     setUserInfo({
       ...userInfo,
       [fieldName]: event.target.value,
     });
-  }
+  });
+  // FUNÇÃO ANTIGA ANTES DO ESLIT ATUALIZAR A REGRA
+  // eslint-disable-next-line react/jsx-no-bind
+  //
+  // function handleChange(event) {
+  //   const fieldName = event.target.getAttribute('name');
+  //   setUserInfo({
+  //     ...userInfo,
+  //     [fieldName]: event.target.value,
+  //   });
+  // }
 
   const isFormValid = userInfo.usuario.length === 0 || userInfo.nome.length === 0;
 
@@ -88,7 +99,6 @@ function FormContent() {
           placeholder="Nome"
           name="nome"
           value={userInfo.nome}
-          // eslint-disable-next-line react/jsx-no-bind
           onChange={handleChange}
         />
       </div>
@@ -97,7 +107,6 @@ function FormContent() {
           placeholder="Usuario"
           name="usuario"
           value={userInfo.usuario}
-          // eslint-disable-next-line react/jsx-no-bind
           onChange={handleChange}
         />
       </div>
