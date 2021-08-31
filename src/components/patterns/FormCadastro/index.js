@@ -3,7 +3,7 @@ import { Lottie } from '@crello/react-lottie';
 import Aproved from '../../../assets/animation/aproved.json';
 import Denied from '../../../assets/animation/denied.json';
 // eslint-disable-next-line import/no-named-as-default
-import { Button } from '../../common/Button';
+import Button from '../../common/Button';
 import TextField from '../../forms/TextFild';
 import Text from '../../foundation/Text';
 import { Box } from '../../foundation/layout/Box';
