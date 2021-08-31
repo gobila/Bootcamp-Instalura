@@ -88,6 +88,7 @@ function FormContent() {
           placeholder="Nome"
           name="nome"
           value={userInfo.nome}
+          // eslint-disable-next-line react/jsx-no-bind
           onChange={handleChange}
         />
       </div>
@@ -96,6 +97,7 @@ function FormContent() {
           placeholder="Usuario"
           name="usuario"
           value={userInfo.usuario}
+          // eslint-disable-next-line react/jsx-no-bind
           onChange={handleChange}
         />
       </div>
