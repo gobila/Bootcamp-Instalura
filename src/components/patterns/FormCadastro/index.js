@@ -98,7 +98,7 @@ function FormContent() {
           value={userInfo.usuario}
           onChange={handleChange}
         />
-      </Box>
+      </div>
       <Button
         variant="primary.main"
         type="submit"
