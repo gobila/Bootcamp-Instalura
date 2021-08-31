@@ -83,22 +83,22 @@ function FormContent() {
         Você está a um passo de saber tudo o que está
         rolando no bairro, complete seu cadastro agora!
       </Text>
-      <Box>
+      <div>
         <TextField
           placeholder="Nome"
           name="nome"
           value={userInfo.nome}
           onChange={handleChange}
         />
-      </Box>
-      <Box>
+      </div>
+      <div>
         <TextField
           placeholder="Usuario"
           name="usuario"
           value={userInfo.usuario}
           onChange={handleChange}
         />
-      </Box>
+      </div>
       <Button
         variant="primary.main"
         type="submit"
