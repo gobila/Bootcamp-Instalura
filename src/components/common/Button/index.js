@@ -82,3 +82,5 @@ Button.propTypes = {
   href: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
+
+export default Button;
