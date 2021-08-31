@@ -1,49 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Button } from '../src/components/common/Button';
-import Footer from '../src/components/common/Footer';
-import Menu from '../src/components/common/Menu';
 import Text from '../src/components/foundation/Text';
 import { Grid } from '../src/components/foundation/layout/Grid';
 import { Box } from '../src/components/foundation/layout/Box';
-import Modal from '../src/components/common/Modal';
-import FormCadastro from '../src/components/patterns/FormCadastro';
+import { WebsitePageContext } from '../src/components/wrappers/WebsitePage';
+import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
 
-export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+function HomeScreen() {
+  const websitePageContext = useContext(WebsitePageContext);
   return (
     <Box
-      flex={1}
       display="flex"
-      flexWrap="wrap"
       flexDirection="column"
-      justifyContent="space-between"
-      backgroundImage="url(/images/bubbles.svg)"
-      backgroundRepeat="no-repeat"
-      backgroundPosition="bottom right"
+      flex="1"
     >
-      {/* pegando o valor de isOpen e modal para execultar o modal */}
-      {/* {isModalOpen && <Modal />} */}
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setIsModalOpen(false);
-        }}
-      >
-        {(propsDoModal) => (// usando () para nao precisar passar o return()
-          // <Box
-          //   backgroundColor="white"
-          //   {...propsDoModal}
-          // >
-          //   <div style={{ padding: '20px', width: '30vw' }}>
-          //     Cadastro de perfil
-          //   </div>
-          // </Box>
-          <FormCadastro propsDoModal={propsDoModal} />
-        )}
-      </Modal>
-      {/* Menu */}
-      <Menu onCadastrarClick={() => setIsModalOpen(true)} />
-      {/* COntainer baseados em grid do conteudo principal */}
+      {/* // Container baseados em grid do conteudo principal */}
       <Grid.Container
         marginTop={{
           xs: '32px',
@@ -92,7 +63,7 @@ export default function Home() {
               }}
               display="block"
               onClick={() => {
-                setIsModalOpen(!isModalOpen);
+                websitePageContext.toggleModalCadastro();
               }}
             >
               Cadastrar
@@ -119,7 +90,36 @@ export default function Home() {
 
         </Grid.Row>
       </Grid.Container>
-      <Footer />
     </Box>
   );
 }
+
+export default websitePageHOC(HomeScreen, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'Home',
+    },
+    pageBoxProps: {
+      backgroundImage: 'url(/images/bubbles.svg)',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'bottom right',
+    },
+  },
+});
+
+// export default function Home() {
+//   return (
+//     <WebsitePageWrapper
+//       seoProps={{
+//         headTitle: 'Home',
+//       }}
+//       pageBoxProps={{
+//         backgroundImage: 'url(/images/bubbles.svg)',
+//         backgroundRepeat: 'no-repeat',
+//         backgroundPosition: 'bottom right',
+//       }}
+//     >
+//       <HomeScreen />
+//     </WebsitePageWrapper>
+//   );
+// }
