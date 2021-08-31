@@ -67,22 +67,38 @@ function FormContent() {
         });
     }}
     >
+      <Button
+        type="button"
+        margin={{
+          xs: 'auto',
+          md: 'initial',
+        }}
+        variant="primary"
+        display="block"
+        onClick={() => { setModalState(false); }}
+        style={{
+          position: 'absolute', top: '30px', right: '30px',
+        }}
+      >
+        X
+      </Button>
       <Text
         variant="title"
         tag="h1"
-        color="tertiary.main"
+        color="tertiary.mainColor"
       >
         Pronto para saber da vida dos outros?
       </Text>
+
       <Text
         variant="paragraph1"
         tag="p"
-        color="tertiary.light"
+        color="tertiary.color"
         marginBottom="32px"
       >
-        Você está a um passo de saber tudo o que está
-        rolando no bairro, complete seu cadastro agora!
+        Você está a um passo de saber tudo que está rolando no bairro, complete seu cadastro agora!
       </Text>
+
       <div>
         <TextField
           placeholder="Nome"
@@ -91,9 +107,10 @@ function FormContent() {
           onChange={handleChange}
         />
       </div>
+
       <div>
         <TextField
-          placeholder="Usuario"
+          placeholder="Usuário"
           name="usuario"
           value={userInfo.usuario}
           onChange={handleChange}
