@@ -7,15 +7,19 @@ import Modal from '../../common/Modal';
 import FormCadastro from '../../patterns/FormCadastro';
 import SEO from '../../common/SEO';
 
+// adicionando o context api para o botao de cadastro da home ter
+// acesso ao a função de abrir o modal
 export const WebsitePageContext = createContext({
   toggleModalCadastro: () => {},
 });
-
+// o prop {menuProps} pega os props vinda das paginas para
+// redenrizar ou nao o menu
 export default function WebsitePageWrapper({
   children, seoProps, pageBoxProps, menuProps,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
+    // provendo a context api para fazer o toggle de abri/fecha modal
     <WebsitePageContext.Provider
       value={{
         toggleModalCadastro: () => {
@@ -42,7 +46,9 @@ export default function WebsitePageWrapper({
             <FormCadastro propsDoModal={propsDoModal} />
           )}
         </Modal>
+        {/* menu props server para definir se o menu vai aparecer ou nao */}
         {menuProps.display && (
+          // função sendo passada traves da prop para abrir o modal
           <Menu onCadastrarClick={() => setIsModalOpen(true)} />
         )}
         {children}

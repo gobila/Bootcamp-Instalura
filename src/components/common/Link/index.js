@@ -26,6 +26,7 @@ export default function Link({ children, href, ...props }) {
         {children}
       </StyledLink>
     </NextLink>
+
   );
 }
 
