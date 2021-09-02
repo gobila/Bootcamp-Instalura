@@ -19,7 +19,7 @@ export default websitePageHOC(LoginScreen, {
       headTitle: 'Login',
     },
     menuProps: {
-      displey: false,
+      displey: false, // menu props para definir se vai aparece ou nao veja no wrapper
     },
   },
 });
