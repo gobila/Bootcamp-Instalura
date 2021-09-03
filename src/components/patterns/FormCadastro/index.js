@@ -31,7 +31,7 @@ function FormContent() {
       ...userInfo,
       [fieldName]: event.target.value,
     });
-  });
+  }, [setUserInfo]);
   // FUNÇÃO ANTIGA ANTES DO ESLIT ATUALIZAR A REGRA
   // eslint-disable-next-line react/jsx-no-bind
   //
