@@ -30,7 +30,9 @@ const Container = styled.div`
         `,
   })}
   ${propsToStyle('marginTop')}
-  
+  ${propsToStyle('flex')}
+  ${propsToStyle('diplay')}
+  ${propsToStyle('alignItems')}  
 `;
 
 const Col = styled.div`
