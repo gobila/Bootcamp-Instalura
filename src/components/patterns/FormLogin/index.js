@@ -8,8 +8,8 @@ import TextField from '../../forms/TextFild';
 export default function LoginForm() {
   const router = useRouter();
   const initialValues = {
-    usuario: 'omariosouto',
-    senha: 'senhasegura',
+    usuario: '',
+    senha: '',
   };
   const form = useForm({
     initialValues,

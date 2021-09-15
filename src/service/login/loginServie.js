@@ -1,3 +1,5 @@
+import { destroyCookie, setCookie } from 'nookies';
+
 async function HTTPClient(url, { headers, body, ...options }) {
   return fetch(url, {
     headers: {
@@ -27,7 +29,15 @@ export const loginService = {
       },
     }).then((respostaConvertida) => {
       console.log(respostaConvertida);
-      return respostaConvertida;
+      const { token } = respostaConvertida.data;
+      setCookie(null, 'APP_TOKEN', token, {
+        path: '/',
+        maxAge: 86400 * 7,
+      });
+      return { token };
     });
+  },
+  logout() {
+    destroyCookie(null, 'APP_TOKEN');
   },
 };
