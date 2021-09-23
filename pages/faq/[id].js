@@ -1,6 +1,6 @@
 import React from 'react';
 import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
-import FAQQuestionScreen from '../../src/components/common/screens/FAQQuestionScreen';
+import FAQQuestionScreen from '../../src/components/screens/FAQQuestionScreen';
 
 // sempre que um arquivo é nomeado entre cochetes []
 // o next entende essa como uma pagina que o conteudo sera gerado de forma dinamica
