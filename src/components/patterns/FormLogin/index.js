@@ -23,6 +23,7 @@ export default function LoginForm() {
   const form = useForm({
     initialValues,
     onSubmit: (values) => {
+      form.setIsFormDisabled(true);
       // alert(values);
       // chamando p sevice login da hook personalizado
       loginService.login({
@@ -30,6 +31,10 @@ export default function LoginForm() {
         password: values.senha,
       }).then(() => {
         router.push('/app/profile');
+      }).catch((err) => {
+        console.error(err);
+      }).finally(() => {
+        form.setIsFormDisabled(false);
       });
     },
 
