@@ -7,13 +7,13 @@ import { Button } from '../../common/Button';
 import TextField from '../../forms/TextFild';
 
 const loginSchema = yup.object().shape({
-  usuario: yup.string().required('"O usuario é obrigatorio"').min(3, 'usuario precisa ter o minimo de 3 caracteres'),
+  usuario: yup.string().required('"O usuário é obrigatorio"').min(3, 'Preencha ao menos 3 caracteres'),
   senha: yup.string()
     .min(8, 'Você precisa ter uma senha de 8 caracteres')
     .required('"A senha é obrigatoria"'),
 });
 
-export default function LoginForm() {
+export default function LoginForm({ onSubmit }) {
   const router = useRouter();
   const initialValues = {
     usuario: '',
@@ -46,7 +46,7 @@ export default function LoginForm() {
   });
 
   return (
-    <form id="formCadastro" onSubmit={form.handleSubmit}>
+    <form id="formCadastro" onSubmit={onSubmit || form.handleSubmit}>
       <TextField
         placeholder="Usuário"
         name="usuario"
