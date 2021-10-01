@@ -1,4 +1,15 @@
 import { useState, useEffect } from 'react';
+
+function formatErrors(yupErrorsInner = []) {
+  return yupErrorsInner.reduce((errorAcc, currentError) => {
+    const fieldName = currentError.path;
+    const errorMessage = currentError.message;
+    return {
+      ...errorAcc,
+      [fieldName]: errorMessage,
+    };
+  }, {});
+}
 // criando o proprop hook personalizado
 export function useForm({ initialValues, onSubmit, validateSchema }) {
   const [values, setValues] = useState(initialValues);
@@ -12,14 +23,7 @@ export function useForm({ initialValues, onSubmit, validateSchema }) {
       setIsFormDisabled(false);
       setErrors({});
     } catch (err) {
-      const formatedErrors = err.inner.reduce((errorAcc, currentError) => {
-        const fieldName = currentError.path;
-        const errorMessage = currentError.message;
-        return {
-          ...errorAcc,
-          [fieldName]: errorMessage,
-        };
-      }, {});
+      const formatedErrors = formatErrors(err.inner);
       setErrors(formatedErrors);
       setIsFormDisabled(true);
     }
