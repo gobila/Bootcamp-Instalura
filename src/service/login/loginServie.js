@@ -26,24 +26,30 @@ const BASE_URL = isStagingEnv
   : 'https://instalura-api.omariosouto.vercel.app';
 
 export const loginService = {
-  async login({ username, password }) {
-    return HTTPClient(`${BASE_URL}/api/login`, {
+  async login({ username, password },
+    setCookieModule = setCookie,
+    HttpClientModule = HTTPClient) {
+    return HttpClientModule(`${BASE_URL}/api/login`, {
       method: 'POST',
       body: {
         username,
         password,
       },
     }).then((respostaConvertida) => {
-      console.log(respostaConvertida);
+      // console.log(respostaConvertida);
       const { token } = respostaConvertida.data;
-      setCookie(null, 'APP_TOKEN', token, {
+      const hasToken = token;
+      if (!hasToken) {
+        throw new Error('Failed to login');
+      }
+      setCookieModule(null, 'APP_TOKEN', token, {
         path: '/',
         maxAge: 86400 * 7,
       });
       return { token };
     });
   },
-  logout() {
-    destroyCookie(null, 'APP_TOKEN');
+  async logout(destroyCookieModule = destroyCookie) {
+    destroyCookieModule(null, 'APP_TOKEN');
   },
 };
