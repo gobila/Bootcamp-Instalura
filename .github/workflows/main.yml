@@ -61,8 +61,13 @@ jobs:
   integration_tests:
     name: Integration Tests
     runs-on: ubuntu-latest # The type of runner that the job will run on
+<<<<<<< HEAD
     env: 
       test: DATO_CMS_TOKEN
+=======
+    env:
+      Tests: DATO_CMS_TOKEN
+>>>>>>> e20f1147335cdf8ee5e37f3a4c85c1649f6c4999
     steps: # Steps represent a sequence of tasks that will be executed as part of the job
       # [Pre Build-step]
       - uses: actions/checkout@v2 ## Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
