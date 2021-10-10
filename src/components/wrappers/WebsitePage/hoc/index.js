@@ -19,7 +19,11 @@ export default function websitePageHOC(
     <WebsiteGlobalProvider>
       {/* props.pageWrapperProps recebe do componet */}
       {/* pageWrapperProps recebe diretamente do HOC */}
-      <WebsitePageWrapper {...pageWrapperProps} {...props.pageWrapperProps}>
+      <WebsitePageWrapper
+        {...pageWrapperProps}
+        {...props.pageWrapperProps}
+        messages={props.messages}
+      >
         <PageComponet {...props} />
       </WebsitePageWrapper>
     </WebsiteGlobalProvider>

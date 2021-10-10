@@ -32,7 +32,10 @@ export default function LoginForm({ onSubmit }) {
       }).then(() => {
         router.push('/app/profile');
       }).catch((err) => {
-        console.error(err);
+        console.error('Error de login', err);
+        return (
+          <span>{err}</span>
+        );
       }).finally(() => {
         form.setIsFormDisabled(false);
       });
