@@ -1,4 +1,5 @@
-import React, { createContext, useState } from 'react';
+import React, { useState } from 'react';
+import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import Footer from '../../common/Footer';
 import { Box } from '../../foundation/layout/Box';
@@ -6,25 +7,26 @@ import Menu from '../../common/Menu';
 import Modal from '../../common/Modal';
 import FormCadastro from '../../patterns/FormCadastro';
 import SEO from '../../common/SEO';
+import { WebsitePageContext } from './context';
 
-// adicionando o context api para o botao de cadastro da home ter
-// acesso ao a função de abrir o modal
-export const WebsitePageContext = createContext({
-  toggleModalCadastro: () => {},
-});
+export { WebsitePageContext } from './context';
+
 // o prop {menuProps} pega os props vinda das paginas para
 // redenrizar ou nao o menu
 export default function WebsitePageWrapper({
-  children, seoProps, pageBoxProps, menuProps,
+  children, seoProps, pageBoxProps, menuProps, messages,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     // provendo a context api para fazer o toggle de abri/fecha modal
     <WebsitePageContext.Provider
       value={{
+        teste: true,
         toggleModalCadastro: () => {
           setIsModalOpen(!isModalOpen);
         },
+        getCMSContent: (cmsKey) => get(messages, cmsKey),
+
       }}
     >
       <SEO {...seoProps} />
@@ -64,6 +66,7 @@ WebsitePageWrapper.defaultProps = {
   menuProps: {
     display: true,
   },
+  messages: '',
 };
 
 WebsitePageWrapper.propTypes = {
@@ -79,4 +82,6 @@ WebsitePageWrapper.propTypes = {
     backgroundPosition: PropTypes.string,
   }),
   children: PropTypes.node.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  messages: PropTypes.object,
 };

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import styled, { css } from 'styled-components';
 import { propsToStyle } from '../../theme/utils/propsToStyle';
 import { breakpointsMedia } from '../../theme/utils/breakpointsMedia';
 import Link from '../../common/Link';
+import { WebsitePageContext } from '../../wrappers/WebsitePage/context';
 
 export const TextStyleVariantsMap = {
   paragraph1: css`
@@ -47,8 +48,14 @@ const TextBase = styled.span`
 `;
 
 export default function Text({
-  tag, variant, children, href, ...props
+  tag, variant, children, href, cmsKey, ...props
 }) {
+  const websitePageContext = useContext(WebsitePageContext);
+  const componentContent = cmsKey ? websitePageContext.getCMSContent(cmsKey) : children;
+
+  // const componentContent = cmsKey
+  //   ? websitePageContext.getCMSContent(cmsKey)
+  //   : children;
   // passando um if para se algum Text tiver um href
   // se tiver ele chama o componet Link que tem o next/Link
   if (href) {
@@ -59,7 +66,7 @@ export default function Text({
         {...props}
         href={href}
       >
-        {children}
+        {componentContent}
       </TextBase>
     );
   }
@@ -69,7 +76,7 @@ export default function Text({
       variant={variant}
       {...props}
     >
-      {children}
+      {componentContent}
     </TextBase>
 
   );
@@ -80,6 +87,7 @@ Text.propsType = {
   variant: PropTypes.string,
   children: PropTypes.node,
   href: PropTypes.string,
+  cmsKey: PropTypes.string,
 };
 
 Text.defaultProps = {
@@ -87,4 +95,5 @@ Text.defaultProps = {
   variant: 'paragraph1',
   children: null, // por causa da teag input que nao tem filho de fato
   href: '',
+  cmsKey: undefined,
 };
