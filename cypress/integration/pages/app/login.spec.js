@@ -21,7 +21,7 @@ describe('/pages/app/login', () => {
       // token gerado no server
         const { token } = intercept.response.body.data;
         // conferindo se existe o token no cookie e se ele é igual ao do server
-        cy.getCookie('APP_TOKEN').should('exist').should(
+        cy.getCookie('LOGIN_COOKIE_APP_TOKEN').should('exist').should(
           'have.property', 'value', token,
         );
       });
