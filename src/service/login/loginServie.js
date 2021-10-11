@@ -1,22 +1,8 @@
 import { destroyCookie, setCookie } from 'nookies';
 import { isStagingEnv } from '../../infra/env/isStagingEnv';
+import { HTTPClient } from '../../infra/http/HTTPClient';
 
-async function HTTPClient(url, { headers, body, ...options }) {
-  return fetch(url, {
-    headers: {
-      ...headers,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-    ...options,
-  }).then((respostaDoServidor) => {
-    if (respostaDoServidor.ok) {
-      return respostaDoServidor.json();
-    }
-    throw new Error('Falha na requisição de pegar os dados da api');
-  });
-}
-
+// VALE A PENA CRIAR UM NOVO ARQUIVO SO PARA ESSA URL
 // API para o login
 // const apiURL = 'https://instalura-api-git-master-omariosouto.vercel.app/api/login';
 const BASE_URL = isStagingEnv
@@ -24,6 +10,8 @@ const BASE_URL = isStagingEnv
   ? 'https://instalura-api-git-master-omariosouto.vercel.app'
 // Back end de prod
   : 'https://instalura-api.omariosouto.vercel.app';
+
+export const LOGIN_COOKIE_APP_TOKEN = 'LOGIN_COOKIE_APP_TOKEN';
 
 export const loginService = {
   async login({ username, password },
@@ -42,14 +30,14 @@ export const loginService = {
       if (!hasToken) {
         throw new Error('Failed to login');
       }
-      setCookieModule(null, 'APP_TOKEN', token, {
+      setCookieModule(null, LOGIN_COOKIE_APP_TOKEN, token, {
         path: '/',
         maxAge: 86400 * 7,
       });
       return { token };
     });
   },
-  async logout(destroyCookieModule = destroyCookie) {
-    destroyCookieModule(null, 'APP_TOKEN');
+  async logout(ctx, destroyCookieModule = destroyCookie) {
+    destroyCookieModule(ctx, LOGIN_COOKIE_APP_TOKEN, { path: '/' });
   },
 };
