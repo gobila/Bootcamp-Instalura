@@ -4,6 +4,7 @@ import { authService } from '../../src/service/auth/authService';
 import { useUserService } from '../../src/service/user/hook';
 import { userService } from '../../src/service/user/userService';
 
+// eslint-disable-next-line no-unused-vars
 export function ProfilePage(props) {
   const [posts, setPosts] = useState([]);
   const dados = useUserService.getProfilePage();
