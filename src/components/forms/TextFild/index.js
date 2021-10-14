@@ -6,6 +6,19 @@ import Text from '../../foundation/Text';
 const InputWrapper = styled.div`
   margin-bottom: 17px;
 `;
+
+const InputSearch = css`
+  background-image: url('/images/lupa.svg');
+  background-repeat: no-repeat;
+  background-size:20px;
+  background-position-x: 15px;
+  background-position-y: 10px;
+  text-indent: 40px;
+  :focus{
+    background-image:none;
+  }
+`;
+
 // Modificando o component TExt
 const Input = styled(Text)`
   width: 100%;
@@ -20,6 +33,12 @@ const Input = styled(Text)`
         font-size: 11px;
       }
     `}
+  ${function inputProps(props) {
+    if (props.search) {
+      return InputSearch;
+    }
+    return '';
+  }}
 `;
 
 Input.defaultProps = {

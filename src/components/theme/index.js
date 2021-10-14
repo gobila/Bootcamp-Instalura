@@ -60,6 +60,8 @@ export const breakpoints = {
   md: 768,
   lg: 992,
   xl: 1200,
+  xxl: 1440,
+  ultrawide: 2543,
 };
 
 export default {

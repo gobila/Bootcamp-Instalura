@@ -3,7 +3,7 @@ import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import Footer from '../../common/Footer';
 import { Box } from '../../foundation/layout/Box';
-import Menu from '../../common/Menu';
+import Menu, { MenuLoged } from '../../common/Menu';
 import Modal from '../../common/Modal';
 import FormCadastro from '../../patterns/FormCadastro';
 import SEO from '../../common/SEO';
@@ -49,9 +49,13 @@ export default function WebsitePageWrapper({
           )}
         </Modal>
         {/* menu props server para definir se o menu vai aparecer ou nao */}
-        {menuProps.display && (
+        {menuProps.display && menuProps.variant === 'default' && (
           // função sendo passada traves da prop para abrir o modal
           <Menu onCadastrarClick={() => setIsModalOpen(true)} />
+        )}
+        {menuProps.display && menuProps.variant === 'loged' && (
+          // função sendo passada traves da prop para abrir o modal
+          <MenuLoged />
         )}
         {children}
         <Footer />
@@ -65,6 +69,7 @@ WebsitePageWrapper.defaultProps = {
   pageBoxProps: {},
   menuProps: {
     display: true,
+    variant: 'default',
   },
   messages: '',
 };
@@ -75,6 +80,7 @@ WebsitePageWrapper.propTypes = {
   }),
   menuProps: PropTypes.shape({
     display: PropTypes.bool,
+    variant: PropTypes.string,
   }),
   pageBoxProps: PropTypes.shape({
     backgroundImage: PropTypes.string,
