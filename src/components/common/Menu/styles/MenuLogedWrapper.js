@@ -2,9 +2,7 @@ import styled, { css } from 'styled-components';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 import { TextStyleVariantsMap } from '../../../foundation/Text';
 
-export { MenuLogedWrapper } from './MenuLogedWrapper';
-
-export const MenuWrapper = styled.nav`
+export const MenuLogedWrapper = styled.nav`
   font-family: 'Rubik', sans-serif;
   display: flex;
   align-items: center;
@@ -27,12 +25,16 @@ export const MenuWrapper = styled.nav`
       max-width: 1160px; 
     `,
     xl: css`
+      width: calc(100% *0.9);
       max-width: 1222px;
+    `,
+    xxl: css`
+      max-width: 1440px;
     `,
   })}
 `;
 
-MenuWrapper.Left = styled.div`
+MenuLogedWrapper.Left = styled.div`
   padding: 0;
   margin: 0;
   order: 1;
@@ -51,10 +53,13 @@ MenuWrapper.Left = styled.div`
       order: initial;
       padding-right: 16px;
     `,
+    xl: css`
+    width: 10%;
+    `,
   })}
 `;
 
-MenuWrapper.Central = styled.div`
+MenuLogedWrapper.Central = styled.div`
   padding: 0;
   margin: 0;
   order: 3;
@@ -62,7 +67,7 @@ MenuWrapper.Central = styled.div`
   list-style: none;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 17px;
   border-top: 1px solid #88989E;
   border-bottom: 1px solid #88989E;
@@ -70,14 +75,17 @@ MenuWrapper.Central = styled.div`
   
   ${breakpointsMedia({
     md: css`
-      max-width: 400px;
-      justify-content: space-between;
+      max-width: calc(100% *0.5);
+      justify-content: flex-end;
       flex: 1;
       order: initial;
       border: none;
       margin: 0;
       padding-top: 0;
       padding-bottom: 0;
+    `,
+    xl: css`
+      max-width: calc(100% *0.6);
     `,
   })}
   a {
@@ -108,7 +116,7 @@ MenuWrapper.Central = styled.div`
   }
 `;
 
-MenuWrapper.Right = styled.div`
+MenuLogedWrapper.Right = styled.div`
   padding: 0;
   margin: 0;
   display: flex;
@@ -121,13 +129,17 @@ MenuWrapper.Right = styled.div`
       order: 2;
     `,
     sm: css`
-      width: calc(100% *0.4);
+      max-width: calc(100% *0.4);
       justify-content: flex-end;
       order: 2;
     `,
     md: css`
+      max-width: calc(100% *0.4);
       order: initial;
       justify-content: center;
+    `,
+    xl: css`
+      max-width: calc(100% *0.3);
     `,
   })}
 `;

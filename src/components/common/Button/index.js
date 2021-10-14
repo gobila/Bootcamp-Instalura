@@ -59,10 +59,43 @@ const ButtonWrapper = styled.button`
     ${propsToStyle('margin')}
     ${propsToStyle('display')}
 `;
+const ButtonWrapperIcon = styled.button`
+    border: 0;
+    cursor: pointer;
+    width: 50px;
+    padding:0px;
+    margin:2px;
+    font-weight: bold;
+    opacity: 1;
+    text-align: center;
+    ${TextStyleVariantsMap.smallestException}
+    color: white;
+    background-color: transparent;
+    transition: opacity${({ theme }) => theme.transition};
+    &:hover,
+    &:focus {
+        opacity: .5;
+    }
+    /* ${propsToStyle('margin')}
+    ${propsToStyle('display')} */
+`;
 
-export function Button({ href, children, ...props }) {
+export function Button({
+  href, children, icon, ...props
+}) {
   const hasHref = Boolean(href);
   const tag = hasHref ? Link : 'button';
+  if (icon) {
+    return (
+      <ButtonWrapperIcon
+        as={tag}
+        href={href}
+        {...props}
+      >
+        {children}
+      </ButtonWrapperIcon>
+    );
+  }
   return (
     <ButtonWrapper
       as={tag}

@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MenuWrapper } from './styles/MenuWrapper';
+import { MenuWrapper, MenuLogedWrapper } from './styles/MenuWrapper';
 import Logo from '../../../assets/Logo';
 import { Button } from '../Button';
 import Text from '../../foundation/Text';
+import TextField from '../../forms/TextFild';
+import PerfilImg from '../PerfilImg';
 
 export default function Menu({ onCadastrarClick }) {
   const link = [{
@@ -58,7 +60,40 @@ export default function Menu({ onCadastrarClick }) {
     </MenuWrapper>
   );
 }
-
 Menu.propTypes = {
   onCadastrarClick: PropTypes.func.isRequired,
 };
+
+export function MenuLoged() {
+  return (
+    <MenuLogedWrapper>
+      {/* logo */}
+      <MenuLogedWrapper.Left>
+        <Logo />
+        {/* Icone  desativado no memento */}
+        {/* <MobileIcon/> */}
+      </MenuLogedWrapper.Left>
+      {/* Menu */}
+      <MenuLogedWrapper.Central>
+        <form>
+          <TextField placeholder="Pesquisa" search />
+        </form>
+      </MenuLogedWrapper.Central>
+      {/* login/cadastro */}
+      <MenuLogedWrapper.Right>
+        <Button icon>
+          <img src="/images/assets/postIcon.png" alt="Novo Post" />
+        </Button>
+        <Button icon>
+          <img src="/images/assets/home.png" alt="Início" />
+        </Button>
+        <Button icon>
+          <img src="/images/assets/heart.png" alt="Curtidas" />
+        </Button>
+        <Button icon>
+          <PerfilImg />
+        </Button>
+      </MenuLogedWrapper.Right>
+    </MenuLogedWrapper>
+  );
+}
