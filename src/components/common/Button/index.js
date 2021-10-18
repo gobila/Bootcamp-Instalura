@@ -15,6 +15,17 @@ const ButtonDefault = css`
     color:${(props) => get(props.theme, `colors.${props.variant}.contrastText`)};
     background-color: ${(props) => get(props.theme, `colors.${props.variant}.color`)};
 `;
+const verMais = css`
+  margin: 0px 0px 0px 25px;
+  border-radius: 8px;
+  padding: 0px;
+  /* background-color: #F1F1F1; */
+  color: #88989E;
+  p{
+    margin: 0px
+  }
+
+ `;
 
 const ButtonWrapper = styled.button`
     border: 0;
@@ -34,6 +45,12 @@ const ButtonWrapper = styled.button`
   }}
     transition: opacity${({ theme }) => theme.transition};
     border-radius: ${({ theme }) => theme.borderRadius};
+    ${function BtnProps(props) {
+    if (props.comments) {
+      return verMais;
+    }
+    return '';
+  }}
     &:hover,
     &:focus {
         opacity: .5;
@@ -59,6 +76,7 @@ const ButtonWrapper = styled.button`
     ${propsToStyle('margin')}
     ${propsToStyle('display')}
 `;
+
 const ButtonWrapperIcon = styled.button`
     border: 0;
     cursor: pointer;
@@ -69,15 +87,13 @@ const ButtonWrapperIcon = styled.button`
     opacity: 1;
     text-align: center;
     ${TextStyleVariantsMap.smallestException}
-    color: white;
+    /* color: white; */
     background-color: transparent;
     transition: opacity${({ theme }) => theme.transition};
     &:hover,
     &:focus {
         opacity: .5;
     }
-    /* ${propsToStyle('margin')}
-    ${propsToStyle('display')} */
 `;
 
 export function Button({

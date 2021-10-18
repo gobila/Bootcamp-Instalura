@@ -13,6 +13,11 @@ export const TextStyleVariantsMap = {
         font-weight:${({ theme }) => theme.typographyVariants.paragraph1.fontWeight};
         line-height:${({ theme }) => theme.typographyVariants.paragraph1.lineHeight};
     `,
+  comments: css`
+    font-size:${({ theme }) => theme.typographyVariants.comments.fontSize};
+    font-weight:${({ theme }) => theme.typographyVariants.comments.fontWeight};
+    line-height:${({ theme }) => theme.typographyVariants.comments.lineHeight};
+`,
   smallestException: css`
         font-size:${({ theme }) => theme.typographyVariants.smallestException.fontSize};
         font-weight:${({ theme }) => theme.typographyVariants.smallestException.fontWeight};
@@ -34,6 +39,11 @@ export const TextStyleVariantsMap = {
       `,
   })}
   `,
+  subTitle: css`
+  font-size:${({ theme }) => theme.typographyVariants.subTitle.fontSize};
+  font-weight:${({ theme }) => theme.typographyVariants.subTitle.fontWeight};
+  line-height:${({ theme }) => theme.typographyVariants.subTitle.lineHeight};
+`,
 
 };
 

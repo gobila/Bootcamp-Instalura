@@ -11,6 +11,8 @@ export const MenuLogedWrapper = styled.nav`
   margin-top: 18px;
   padding-left: 28px;
   padding-right: 28px;
+  margin-bottom: 2px;
+  z-index: 1;
   ${breakpointsMedia({
     md: css`
       justify-content: flex-start;
@@ -22,14 +24,17 @@ export const MenuLogedWrapper = styled.nav`
       max-width: 768px;
     `,
     lg: css`
-      max-width: 1160px; 
+      max-width: calc(100%);
+      margin-top: 0px;
+      padding-top: 10px;
+      box-shadow: black 0px 1px 1px 1px;
     `,
     xl: css`
-      width: calc(100% *0.9);
-      max-width: 1222px;
+      max-width: calc(100% *1);
     `,
     xxl: css`
-      max-width: 1440px;
+      max-width: calc(100% *1);
+      padding: 10px 20%;
     `,
   })}
 `;
@@ -140,6 +145,8 @@ MenuLogedWrapper.Right = styled.div`
     `,
     xl: css`
       max-width: calc(100% *0.3);
+      
+      justify-content: flex-end;
     `,
   })}
 `;

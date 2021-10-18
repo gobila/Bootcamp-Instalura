@@ -1,6 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { propsToStyle } from '../../../theme/utils/propsToStyle';
 
+export const logedBackground = css`
+    background-color:${({ theme }) => theme.colors.background.main.color}
+`;
 export const Box = styled.div`
     ${propsToStyle('flex')};
     ${propsToStyle('display')};
@@ -23,4 +26,13 @@ export const Box = styled.div`
     ${propsToStyle('marginBottom')}
     ${propsToStyle('marginRight')}
     ${({ theme, borderRadiusTheme }) => borderRadiusTheme && `border-radius: ${theme.borderRadius}`}
+//modulo 5 projeto final
+    ${propsToStyle('alignItems')}
+
+    ${function BoxProps(props) {
+    if (props.loged) {
+      return logedBackground;
+    }
+    return '';
+  }}
 `;
