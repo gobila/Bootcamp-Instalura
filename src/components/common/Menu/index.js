@@ -75,7 +75,7 @@ export function MenuLoged() {
       </MenuLogedWrapper.Left>
       {/* Menu */}
       <MenuLogedWrapper.Central>
-        <form>
+        <form style={{ width: '60%' }}>
           <TextField placeholder="Pesquisa" search />
         </form>
       </MenuLogedWrapper.Central>

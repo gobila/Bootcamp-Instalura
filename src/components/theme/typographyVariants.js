@@ -34,4 +34,10 @@ export const typographyVariants = {
     fontWeight: '400',
     lineHeight: 1, // 100%
   },
+  // [comments]
+  comments: {
+    fontSize: '18px',
+    fontWeight: '400',
+    lineHeight: 1.25, // 125%
+  },
 };

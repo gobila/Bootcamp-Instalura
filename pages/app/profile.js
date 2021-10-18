@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Card from '../../src/components/common/Card';
+import { Box } from '../../src/components/foundation/layout/Box';
 import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
 import { authService } from '../../src/service/auth/authService';
 import { useUserService } from '../../src/service/user/hook';
@@ -18,29 +20,37 @@ export function ProfilePage(props) {
       ...posts, ...dadosResult,
     ]);
   };
-  console.log(posts);
   useEffect(() => {
     if (!dados.loading && dados.data) {
       getPosts();
     }
   }, [dados.loading]);
+  console.log(dados.data);
   return (
-    <div>
-      {/* <Menu /> */}
-      {dados.loading && 'Loading'}
+    <Box loged>
+
+      {/* {dados.loading && 'Loading'}
       {!dados.loading && dados.data && 'Carregou com sucesso'}
       {!dados.loading && dados.error}
       <button type="button" onClick={getPosts}>click</button>
+      Página de Profile! */}
+      {/* <img src="https://media.giphy.com/media/bn0zlGb4LOyo8/giphy.gif" alt="Nicolas Cage" /> */}
 
-      Página de Profile!
-      <img src="https://media.giphy.com/media/bn0zlGb4LOyo8/giphy.gif" alt="Nicolas Cage" />
-      {posts.map((i) => (
+      {posts.length !== 0
+      && (
+      <Card
+        Post="https://media.giphy.com/media/bn0zlGb4LOyo8/giphy.gif"
+        UserName={posts[0].user.slice(10)}
+        likes={dados.data.user.totalLikes}
+      />
+      )}
+      {/* {posts.map((i) => (
         <>
           <h1>{i.num}</h1>
           <img src={i.photoUrl} alt="" style={{ width: '90%' }} />
         </>
-      ))}
-    </div>
+      ))} */}
+    </Box>
   );
 }
 export async function getServerSideProps(ctx) {
@@ -73,6 +83,10 @@ export default websitePageHOC(ProfilePage, {
     menuProps: {
       display: true,
       variant: 'loged',
+    },
+    pageBoxProps: {
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'bottom right',
     },
   },
 });
