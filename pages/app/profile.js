@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../../src/components/common/Card';
 import { Box } from '../../src/components/foundation/layout/Box';
+import Text from '../../src/components/foundation/Text';
 import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
 import { authService } from '../../src/service/auth/authService';
 import { useUserService } from '../../src/service/user/hook';
@@ -13,7 +14,7 @@ export function ProfilePage(props) {
   // console.log(dados.data.posts.length);
   const getPosts = () => {
     const dadosResult = [];
-    for (let i = 0; i < 25; i += 1) {
+    for (let i = dados.data.posts.length - 1; i > 0; i -= 1) {
       dadosResult.push({ ...dados.data.posts[i], num: i });
     }
     setPosts([
@@ -25,7 +26,6 @@ export function ProfilePage(props) {
       getPosts();
     }
   }, [dados.loading]);
-  console.log(dados.data);
   return (
     <Box loged>
 
@@ -35,21 +35,27 @@ export function ProfilePage(props) {
       <button type="button" onClick={getPosts}>click</button>
       Página de Profile! */}
       {/* <img src="https://media.giphy.com/media/bn0zlGb4LOyo8/giphy.gif" alt="Nicolas Cage" /> */}
-
-      {posts.length !== 0
+      {posts.length === 0
       && (
-      <Card
-        Post="https://media.giphy.com/media/bn0zlGb4LOyo8/giphy.gif"
-        UserName={posts[0].user.slice(10)}
-        likes={dados.data.user.totalLikes}
-      />
+        <Box display="flex" flexDirection="column" alignItems="center">
+          <img src="/images/assets/loading.webp" alt="Carregando" />
+          <Text tag="h3" variant="subTitle">Estamos buscando novas fofocas para você</Text>
+        </Box>
       )}
-      {/* {posts.map((i) => (
+      {posts.map((i) => (
         <>
-          <h1>{i.num}</h1>
-          <img src={i.photoUrl} alt="" style={{ width: '90%' }} />
+          {i.length !== 0
+          && (
+          <Card
+            description={i.description}
+            filter={i.filter}
+            Post={i.photoUrl}
+            UserName={i.user}
+            likes={dados.data.user.totalLikes}
+          />
+          )}
         </>
-      ))} */}
+      ))}
     </Box>
   );
 }

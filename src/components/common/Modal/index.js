@@ -16,7 +16,7 @@ const ModalWrapper = styled.div`
   bottom: 0;
   margin: auto;
   overflow: none;
-  z-index:1;
+  z-index:2;
 
   ${({ isOpen }) => {
     if (isOpen) {
@@ -37,7 +37,32 @@ const LockScroll = createGlobalStyle`
     overflow: hidden;
   }
 `;
-function Modal({ isOpen, onClose, children }) {
+function Modal({
+  isOpen, onClose, children, newPost,
+}) {
+  if (newPost) {
+    return (
+      <ModalWrapper
+        isOpen={isOpen}
+        onClick={(event) => {
+          const isSafeArea = event.target.closest('[data-modal-safe-area="true"]');
+          const btnClose = event.target.closest('[data-modal-btn-close="true"]');
+          if (!isSafeArea || btnClose) {
+            onClose();
+          }
+        }}
+      >
+        {/* aplicando o LockScroll no modal */}
+        {isOpen && <LockScroll />}
+        {/* esse cildren passa para o filho essa data como prop */}
+        {children({
+          'data-modal-safe-area': 'true',
+          'data-modal-btn-close': 'false',
+        })}
+      </ModalWrapper>
+    );
+  }
+
   return (
     <ModalWrapper
       isOpen={isOpen}
@@ -68,6 +93,7 @@ function Modal({ isOpen, onClose, children }) {
           display: 'flex',
         }}
       >
+        {/* esse cildren passa para o filho essa data como prop */}
         {children({
           'data-modal-safe-area': 'true',
         })}

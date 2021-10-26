@@ -8,6 +8,7 @@ import Modal from '../../common/Modal';
 import FormCadastro from '../../patterns/FormCadastro';
 import SEO from '../../common/SEO';
 import { WebsitePageContext } from './context';
+import { CardNewPost } from '../../common/Card';
 
 export { WebsitePageContext } from './context';
 
@@ -17,6 +18,7 @@ export default function WebsitePageWrapper({
   children, seoProps, pageBoxProps, menuProps, messages,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newPostModal, setNewPostModal] = useState(false);
   return (
     // provendo a context api para fazer o toggle de abri/fecha modal
     <WebsitePageContext.Provider
@@ -48,6 +50,18 @@ export default function WebsitePageWrapper({
             <FormCadastro propsDoModal={propsDoModal} />
           )}
         </Modal>
+
+        <Modal
+          isOpen={newPostModal}
+          onClose={() => setNewPostModal(false)}
+          newPost
+        >
+          {(propsDoModal) => (
+            <CardNewPost
+              propsDoModal={propsDoModal}
+            />
+          )}
+        </Modal>
         {/* menu props server para definir se o menu vai aparecer ou nao */}
         {menuProps.display && menuProps.variant === 'default' && (
           // função sendo passada traves da prop para abrir o modal
@@ -55,7 +69,7 @@ export default function WebsitePageWrapper({
         )}
         {menuProps.display && menuProps.variant === 'loged' && (
           // função sendo passada traves da prop para abrir o modal
-          <MenuLoged />
+          <MenuLoged onNewPostClick={() => setNewPostModal(true)} />
         )}
         {children}
         <Footer />
