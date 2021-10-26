@@ -5,6 +5,15 @@ import Text from '../../foundation/Text';
 
 const InputWrapper = styled.div`
   margin-bottom: 17px;
+  ${function inputProps(props) {
+    if (props.previewPhoto) {
+      return css`
+        width: 100%;
+        margin:0px;
+      `;
+    }
+    return '';
+  }}
 `;
 
 const InputSearch = css`
@@ -37,6 +46,11 @@ const Input = styled(Text)`
     if (props.search) {
       return InputSearch;
     }
+    if (props.previewPhoto) {
+      return css`
+        border-radius: 9px 0px 0px 9px;
+      `;
+    }
     return '';
   }}
 `;
@@ -58,7 +72,7 @@ export default function TextField({
   const hasError = Boolean(error);
   const isFieldInvalid = hasError && isTouched;
   return (
-    <InputWrapper>
+    <InputWrapper {...props}>
       <Input
         type="text"
         placeholder={placeholder}

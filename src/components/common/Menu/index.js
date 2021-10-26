@@ -64,7 +64,7 @@ Menu.propTypes = {
   onCadastrarClick: PropTypes.func.isRequired,
 };
 
-export function MenuLoged() {
+export function MenuLoged({ onNewPostClick }) {
   return (
     <MenuLogedWrapper>
       {/* logo */}
@@ -81,7 +81,7 @@ export function MenuLoged() {
       </MenuLogedWrapper.Central>
       {/* login/cadastro */}
       <MenuLogedWrapper.Right>
-        <Button icon>
+        <Button icon onClick={onNewPostClick}>
           <img src="/images/assets/postIcon.png" alt="Novo Post" />
         </Button>
         <Button icon>

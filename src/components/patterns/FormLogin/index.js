@@ -32,6 +32,7 @@ export default function LoginForm({ onSubmit }) {
       }).then(() => {
         router.push('/app/profile');
       }).catch((err) => {
+        // eslint-disable-next-line no-console
         console.error('Error de login', err);
         return (
           <span>{err}</span>

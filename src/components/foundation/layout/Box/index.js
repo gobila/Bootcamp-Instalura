@@ -28,7 +28,8 @@ export const Box = styled.div`
     ${({ theme, borderRadiusTheme }) => borderRadiusTheme && `border-radius: ${theme.borderRadius}`}
 //modulo 5 projeto final
     ${propsToStyle('alignItems')}
-
+    ${propsToStyle('height')}
+    ${propsToStyle('maxHeight')}
     ${function BoxProps(props) {
     if (props.loged) {
       return logedBackground;

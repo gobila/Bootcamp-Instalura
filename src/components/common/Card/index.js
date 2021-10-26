@@ -5,9 +5,10 @@ import { Box } from '../../foundation/layout/Box';
 import Text from '../../foundation/Text';
 import { Button } from '../Button';
 
+export { CardNewPost } from './CardNewPost';
+
 const CardWrapper = styled.div`
   max-width: 600px;
-  max-height: 780px;
   margin: 25px auto 25px auto;
   display:flex;
   flex-direction: column;
@@ -28,6 +29,7 @@ const CardHead = styled(Box)`
 `;
 const CardBody = styled(Box)`
   max-width: 100%;
+  max-height: 600px;
   img{
     width:100%;
   }
@@ -46,7 +48,9 @@ const CardFooter = styled(Box)`
   }
 `;
 
-export default function Card({ Post, UserName, likes }) {
+export default function Card({
+  Post, UserName, likes, filter, description,
+}) {
   const avatar = 'https://upload.wikimedia.org/wikipedia/commons/c/c0/Nicolas_Cage_Deauville_2013.jpg';
   return (
     <CardWrapper>
@@ -66,7 +70,7 @@ export default function Card({ Post, UserName, likes }) {
         </Button>
       </CardHead>
       <CardBody>
-        <img src={Post} alt="Nicolas Cage" />
+        <img src={Post} className={filter} alt={description} />
       </CardBody>
       <CardFooter>
         <Box display="flex" justifyContent="space-between">
