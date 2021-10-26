@@ -9,7 +9,7 @@ const BASE_URL = isStagingEnv
 // Back end de Dev
   ? 'https://instalura-api-git-master-omariosouto.vercel.app'
 // Back end de prod
-  : 'https://instalura-api.vercel.app/';
+  : 'https://instalura-api.vercel.app';
 
 export const LOGIN_COOKIE_APP_TOKEN = 'LOGIN_COOKIE_APP_TOKEN';
 
