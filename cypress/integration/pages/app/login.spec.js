@@ -6,7 +6,7 @@ describe('/pages/app/login', () => {
     // it é a palavra do cypress para m grupo de teste
     it('go to the profile page', () => {
     // interceptando a chamada da api
-      cy.intercept('https://instalura-api-git-master-omariosouto.vercel.app/api/login')
+      cy.intercept('https://instalura-api-git-master-omariosouto.vercel.app/api/feed')
         .as('userLogin');
       // instanciando a classe
       const loginScreen = new LoginScreenPageObject(cy);
