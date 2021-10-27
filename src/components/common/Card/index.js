@@ -30,6 +30,7 @@ const CardHead = styled(Box)`
 const CardBody = styled(Box)`
   max-width: 100%;
   max-height: 600px;
+  display:flex;
   img{
     width:100%;
   }

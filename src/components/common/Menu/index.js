@@ -64,6 +64,7 @@ Menu.propTypes = {
   onCadastrarClick: PropTypes.func.isRequired,
 };
 
+// =====================MENU LOGADO ================================ //
 export function MenuLoged({ onNewPostClick }) {
   return (
     <MenuLogedWrapper>
@@ -90,7 +91,7 @@ export function MenuLoged({ onNewPostClick }) {
         <Button icon>
           <img src="/images/assets/heart.png" alt="Curtidas" />
         </Button>
-        <Button icon>
+        <Button icon href="profile">
           <PerfilImg />
         </Button>
       </MenuLogedWrapper.Right>

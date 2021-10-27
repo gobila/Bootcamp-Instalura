@@ -19,12 +19,10 @@ const verMais = css`
   margin: 0px 0px 0px 25px;
   border-radius: 8px;
   padding: 0px;
-  /* background-color: #F1F1F1; */
   color: #88989E;
   p{
     margin: 0px
   }
-
  `;
 
 const ButtonWrapper = styled.button`
@@ -34,9 +32,6 @@ const ButtonWrapper = styled.button`
     font-weight: bold;
     opacity: 1;
     border-radius: 8px;
-    /* ${TextStyleVariantsMap.smallestException} */
-    /* color: white;
-    background-color: #D7385E; */
     ${function BtnProps(props) {
     if (props.ghost) {
       return ButtonGhost;
@@ -78,6 +73,9 @@ const ButtonWrapper = styled.button`
 `;
 
 const ButtonWrapperIcon = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 0;
     cursor: pointer;
     width: 50px;

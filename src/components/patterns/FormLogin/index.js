@@ -30,7 +30,7 @@ export default function LoginForm({ onSubmit }) {
         username: values.usuario,
         password: values.senha,
       }).then(() => {
-        router.push('/app/profile');
+        router.push('/app/feed');
       }).catch((err) => {
         // eslint-disable-next-line no-console
         console.error('Error de login', err);
