@@ -6,7 +6,7 @@ describe('/pages/app/login', () => {
     // it é a palavra do cypress para m grupo de teste
     it('go to the profile page', () => {
     // interceptando a chamada da api
-      cy.intercept('https://instalura-api-git-master-omariosouto.vercel.app/api/feed')
+      cy.intercept('https://instalura-api-git-master-omariosouto.vercel.app/api/login')
         .as('userLogin');
       // instanciando a classe
       const loginScreen = new LoginScreenPageObject(cy);
@@ -15,7 +15,7 @@ describe('/pages/app/login', () => {
       loginScreen.fillLoginForm({ user: 'omariosouto', password: 'senhasegura' }).submitLoginFom();
 
       // Carrgar a pagina de profile em /app/login
-      cy.url().should('include', '/app/profile');
+      cy.url().should('include', '/app/feed');
       // confimando se pegou o token
       cy.wait('@userLogin').then((intercept) => {
       // token gerado no server
