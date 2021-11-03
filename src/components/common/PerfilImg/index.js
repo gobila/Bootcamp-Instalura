@@ -11,10 +11,10 @@ const PerImg = styled.img`
   border-radius: 50%;
 `;
 
-export default function PerfilImg() {
+export default function PerfilImg({ avatar }) {
   return (
     <PerfilBox>
-      <PerImg src="https://avatars.githubusercontent.com/u/71636?v=4" alt="Perfil" />
+      <PerImg src={avatar} alt="Perfil" />
     </PerfilBox>
   );
 }
