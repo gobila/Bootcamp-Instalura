@@ -28,7 +28,6 @@ export default function WebsitePageWrapper({
           setIsModalOpen(!isModalOpen);
         },
         getCMSContent: (cmsKey) => get(messages, cmsKey),
-
       }}
     >
       <SEO {...seoProps} />

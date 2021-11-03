@@ -85,7 +85,7 @@ export function MenuLoged({ onNewPostClick }) {
         <Button icon onClick={onNewPostClick}>
           <img src="/images/assets/postIcon.png" alt="Novo Post" />
         </Button>
-        <Button icon>
+        <Button icon href="feed">
           <img src="/images/assets/home.png" alt="Início" />
         </Button>
         <Button icon>
