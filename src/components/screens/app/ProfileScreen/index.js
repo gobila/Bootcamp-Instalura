@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import InforCard from '../../../common/Card/InforCard';
 import { Box } from '../../../foundation/layout/Box';
 import { Grid } from '../../../foundation/layout/Grid';
+import { WebsitePageContext } from '../../../wrappers/WebsitePage';
 
-export default function ProfileScreen(props) {
-  const { gitInfo } = props;
-  const { user } = props;
-  const { posts } = props;
+export default function ProfileScreen() {
+  const websiteUserInfos = useContext(WebsitePageContext);
+  const { gitInfo } = websiteUserInfos.userContext;
+  const { user } = websiteUserInfos.userContext;
+  const { posts } = websiteUserInfos.userContext;
 
   return (
     <Box loged>

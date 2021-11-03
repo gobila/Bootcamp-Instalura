@@ -14,13 +14,15 @@ export async function getServerSideProps(ctx) {
     const gitInfos = await userService.githubInfos('omariosouto');
     return {
       props: {
-        user: {
-          ...session,
-          ...profilePage.user,
-        },
-        posts: profilePage.posts,
-        gitInfo: {
-          ...gitInfos,
+        userContext: {
+          user: {
+            ...session,
+            ...profilePage.user,
+          },
+          posts: profilePage.posts,
+          gitInfo: {
+            ...gitInfos,
+          },
         },
       },
     };

@@ -15,7 +15,7 @@ export { WebsitePageContext } from './context';
 // o prop {menuProps} pega os props vinda das paginas para
 // redenrizar ou nao o menu
 export default function WebsitePageWrapper({
-  children, seoProps, pageBoxProps, menuProps, messages,
+  children, seoProps, pageBoxProps, menuProps, messages, userContext,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newPostModal, setNewPostModal] = useState(false);
@@ -28,6 +28,7 @@ export default function WebsitePageWrapper({
           setIsModalOpen(!isModalOpen);
         },
         getCMSContent: (cmsKey) => get(messages, cmsKey),
+        userContext,
       }}
     >
       <SEO {...seoProps} />
@@ -68,7 +69,10 @@ export default function WebsitePageWrapper({
         )}
         {menuProps.display && menuProps.variant === 'loged' && (
           // função sendo passada traves da prop para abrir o modal
-          <MenuLoged onNewPostClick={() => setNewPostModal(true)} />
+          <MenuLoged
+            onNewPostClick={() => setNewPostModal(true)}
+            avatar={userContext.gitInfo.avatar_url}
+          />
         )}
         {children}
         <Footer />

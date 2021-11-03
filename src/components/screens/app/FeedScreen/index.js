@@ -4,10 +4,10 @@ import { Box } from '../../../foundation/layout/Box';
 import Text from '../../../foundation/Text';
 
 // eslint-disable-next-line no-unused-vars
-export default function FeedScreen(props) {
-  const { gitInfo } = props;
-  const { user } = props;
-  const { posts } = props;
+export default function FeedScreen({ userContext }) {
+  const { gitInfo } = userContext;
+  const { user } = userContext;
+  const { posts } = userContext;
 
   // const [posts, setPosts] = useState([]);
   // const dados = useUserService.getProfilePage();
@@ -26,8 +26,6 @@ export default function FeedScreen(props) {
   //     getPosts();
   //   }
   // }, [dados.loading]);
-  console.log(props);
-  console.log(gitInfo);
   return (
     <Box loged>
 
@@ -43,6 +41,7 @@ export default function FeedScreen(props) {
           {i.length !== 0
           && (
           <Card
+            avatarURL={gitInfo.avatar_url}
             description={i.description}
             filter={i.filter}
             Post={i.photoUrl}

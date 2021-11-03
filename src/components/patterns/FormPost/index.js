@@ -57,9 +57,6 @@ export default function FormPost({
     },
   });
 
-  // console.log('photo', form.values.photoUrl);
-  // console.log('description', form.values.description);
-
   return (
     <>
       {step === 'first' && (

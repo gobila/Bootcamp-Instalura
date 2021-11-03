@@ -65,7 +65,7 @@ Menu.propTypes = {
 };
 
 // =====================MENU LOGADO ================================ //
-export function MenuLoged({ onNewPostClick }) {
+export function MenuLoged({ onNewPostClick, avatar }) {
   return (
     <MenuLogedWrapper>
       {/* logo */}
@@ -92,7 +92,9 @@ export function MenuLoged({ onNewPostClick }) {
           <img src="/images/assets/heart.png" alt="Curtidas" />
         </Button>
         <Button icon href="profile">
-          <PerfilImg />
+          <PerfilImg
+            avatar={avatar}
+          />
         </Button>
       </MenuLogedWrapper.Right>
     </MenuLogedWrapper>

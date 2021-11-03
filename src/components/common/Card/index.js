@@ -50,9 +50,9 @@ const CardFooter = styled(Box)`
 `;
 
 export default function Card({
-  Post, UserName, likes, filter, description,
+  Post, UserName, likes, filter, description, avatarURL,
 }) {
-  const avatar = 'https://upload.wikimedia.org/wikipedia/commons/c/c0/Nicolas_Cage_Deauville_2013.jpg';
+  // const avatar = 'https://upload.wikimedia.org/wikipedia/commons/c/c0/Nicolas_Cage_Deauville_2013.jpg';
   return (
     <CardWrapper>
       <CardHead>
@@ -60,7 +60,7 @@ export default function Card({
           display="flex"
           alignItems="center"
         >
-          <img src={avatar} alt="Nicolas Cage" />
+          <img src={avatarURL} alt={`Avatar do ${UserName}`} />
           <Text tag="p" variant="paragraph1">
             {UserName}
           </Text>
@@ -93,7 +93,7 @@ export default function Card({
           </Button>
         </Box>
         <Box display="flex" alignItems="center">
-          <img src={avatar} alt="Nicolas Cage" />
+          <img src={avatarURL} alt={`Avatar do ${UserName}`} />
           <Text tag="p" variant="comments">
             So excited to play this new...
           </Text>
