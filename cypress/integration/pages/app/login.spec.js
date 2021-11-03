@@ -15,7 +15,7 @@ describe('/pages/app/login', () => {
       loginScreen.fillLoginForm({ user: 'omariosouto', password: 'senhasegura' }).submitLoginFom();
 
       // Carrgar a pagina de profile em /app/login
-      cy.url().should('include', '/app/profile');
+      cy.url().should('include', '/app/feed');
       // confimando se pegou o token
       cy.wait('@userLogin').then((intercept) => {
       // token gerado no server
