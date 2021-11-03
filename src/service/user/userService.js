@@ -23,7 +23,7 @@ export const userService = {
       });
       return {
         user: {
-          totalLikes: 100,
+          totalLikes: 1,
         },
         posts: response.data,
       };
@@ -46,8 +46,20 @@ export const userService = {
       });
       return response.data;
     } catch (err) {
-      throw new Error('Nao conseguiu trazer os post do user', err);
+      throw new Error('Não foi possivel enviar o novo post', err);
     }
   },
 
+  // GitHub infos
+  async githubInfos(user) {
+    const url = `https://api.github.com/users/${user}`;
+    // passando o objeto vazio pois HTTPClient() requer 2 argumentos sendo o segundo as
+    // opçoes de hearder e body
+    const response = await HTTPClient(url, { });
+    return response;
+    // const restona = await fetch('https://api.github.com/users/omariosouto')
+    //   .then((res) => res.json())
+    //   .then((resp) => resp);
+    // return restona
+  },
 };

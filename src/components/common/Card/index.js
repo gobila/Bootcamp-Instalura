@@ -71,7 +71,7 @@ export default function Card({
         </Button>
       </CardHead>
       <CardBody>
-        <img src={Post} className={filter} alt={description} />
+        <img src={Post} className={`${filter} filter-${filter}`} alt={description} />
       </CardBody>
       <CardFooter>
         <Box display="flex" justifyContent="space-between">

@@ -69,19 +69,19 @@ const Col = styled.div`
                     flex-grow:0;
                     flex-shrink:0;
                     flex-basis:  ${(100 * value.md) / 12}%;
-                    max-width: ${(100 * value.sm) / 12}%;
+                    max-width: ${(100 * value.md) / 12}%;
                 ` : '',
       lg: value?.lg
         ? css`
                     flex-grow:0;
                     flex-shrink:0;
                     flex-basis: ${(100 * value.lg) / 12}%;
-                    max-width: ${(100 * value.sm) / 12}%;
+                    max-width: ${(100 * value.lg) / 12}%;
                 ` : '',
       xl: value?.xl
         ? css`
                     flex: 0 0 ${(100 * value.xl) / 12}%;
-                    max-width: ${(100 * value.sm) / 12}%;
+                    max-width: ${(100 * value.xl) / 12}%;
                 ` : '',
     });
   }}
@@ -123,6 +123,10 @@ const Col = styled.div`
 
     ${propsToStyle('order')}
     ${propsToStyle('marginTop')}
+    
+    ${propsToStyle('flexWrap')}
+    
+    ${propsToStyle('padding')}
 `;
 
 export const Grid = {
@@ -133,12 +137,14 @@ export const Grid = {
     margin-right: -16px;
     margin-left: -16px;
     ${propsToStyle('flex')}
+    ${propsToStyle('margin')}
     ${propsToStyle('marginLeft')}
     ${propsToStyle('marginRight')}
     ${propsToStyle('justifyContent')}
     ${propsToStyle('marginTop')}
     ${propsToStyle('marginBottom')}
     ${propsToStyle('flexDirection')}
+    ${propsToStyle('alignItems')}
   `,
   Col,
 };
