@@ -9,7 +9,6 @@ export default function ProfileScreen() {
   const { gitInfo } = websiteUserInfos.userContext;
   const { user } = websiteUserInfos.userContext;
   const { posts } = websiteUserInfos.userContext;
-
   return (
     <Box loged>
       <Grid.Container
@@ -23,6 +22,9 @@ export default function ProfileScreen() {
           userPhoto={gitInfo.avatar_url}
           userName={user.username}
           userBio={gitInfo.bio}
+          following={gitInfo.following}
+          followers={gitInfo.followers}
+          postLength={posts.length}
         />
         {/* </Grid.Row> */}
 
@@ -35,7 +37,8 @@ export default function ProfileScreen() {
             flexWrap="wrap"
           >
             {posts.map((i) => (
-              <Box width="30%" margin="1.5%" display="flex">
+              // eslint-disable-next-line no-underscore-dangle
+              <Box width="30%" margin="1.5%" display="flex" key={i._id}>
                 <img src={i.photoUrl} className={`${i.filter} filter-${i.filter}`} alt={i.description} style={{ width: '100%', overflowWrap: 'break-word' }} />
               </Box>
             )).reverse().slice(0, 100)}

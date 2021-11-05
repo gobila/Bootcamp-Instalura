@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { MenuWrapper, MenuLogedWrapper } from './styles/MenuWrapper';
 import Logo from '../../../assets/Logo';
@@ -66,6 +66,8 @@ Menu.propTypes = {
 
 // =====================MENU LOGADO ================================ //
 export function MenuLoged({ onNewPostClick, avatar }) {
+  const [searhClick, setSearhClick] = useState(false);
+
   return (
     <MenuLogedWrapper>
       {/* logo */}
@@ -75,23 +77,36 @@ export function MenuLoged({ onNewPostClick, avatar }) {
         {/* <MobileIcon/> */}
       </MenuLogedWrapper.Left>
       {/* Menu */}
-      <MenuLogedWrapper.Central>
-        <form style={{ width: '60%' }}>
+      <MenuLogedWrapper.Central searhClick={searhClick}>
+        <form>
           <TextField placeholder="Pesquisa" search />
         </form>
       </MenuLogedWrapper.Central>
       {/* login/cadastro */}
       <MenuLogedWrapper.Right>
-        <Button icon onClick={onNewPostClick}>
+        {/* Novo Post */}
+        <Button icon onClick={onNewPostClick} order={{ xs: '3', md: '1' }}>
           <img src="/images/assets/postIcon.png" alt="Novo Post" />
         </Button>
-        <Button icon href="feed">
+        {/* Botao de pesquisa (apenas no mobile) */}
+        <Button
+          icon
+          onClick={() => setSearhClick(!searhClick)}
+          order={{ xs: '2', md: '' }}
+          display={{ xs: 'block', md: 'none' }}
+        >
+          <img src="/images/lupa.svg" alt="Pesquisa" style={{ width: '35px' }} />
+        </Button>
+        {/* Botao de Feed */}
+        <Button icon href="feed" order={{ xs: '1', md: '2' }}>
           <img src="/images/assets/home.png" alt="Início" />
         </Button>
-        <Button icon>
+        {/* Botao de curtidas */}
+        <Button icon order={{ xs: '3', md: '3' }}>
           <img src="/images/assets/heart.png" alt="Curtidas" />
         </Button>
-        <Button icon href="profile">
+        {/* Botao de Profile */}
+        <Button icon href="profile" order={{ xs: '5', md: '4' }}>
           <PerfilImg
             avatar={avatar}
           />

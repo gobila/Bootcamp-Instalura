@@ -9,23 +9,6 @@ export default function FeedScreen({ userContext }) {
   const { user } = userContext;
   const { posts } = userContext;
 
-  // const [posts, setPosts] = useState([]);
-  // const dados = useUserService.getProfilePage();
-  // // console.log(dados.data.posts.length);
-  // const getPosts = () => {
-  //   const dadosResult = [];
-  //   for (let i = dados.data.posts.length - 1; i > 0; i -= 1) {
-  //     dadosResult.push({ ...dados.data.posts[i], num: i });
-  //   }
-  //   setPosts([
-  //     ...posts, ...dadosResult,
-  //   ]);
-  // };
-  // useEffect(() => {
-  //   if (!dados.loading && dados.data) {
-  //     getPosts();
-  //   }
-  // }, [dados.loading]);
   return (
     <Box loged>
 
@@ -37,7 +20,8 @@ export default function FeedScreen({ userContext }) {
         </Box>
       )}
       {posts.map((i) => (
-        <>
+        // eslint-disable-next-line no-underscore-dangle
+        <div key={i._id}>
           {i.length !== 0
           && (
           <Card
@@ -49,7 +33,7 @@ export default function FeedScreen({ userContext }) {
             likes={user.totalLikes}
           />
           )}
-        </>
+        </div>
       )).reverse()}
     </Box>
   );

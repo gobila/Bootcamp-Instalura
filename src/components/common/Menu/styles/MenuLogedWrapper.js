@@ -13,21 +13,34 @@ export const MenuLogedWrapper = styled.nav`
   padding-right: 28px;
   margin-bottom: 2px;
   z-index: 1;
+  background-color: ${({ theme }) => theme.colors.background.light.color};
   ${breakpointsMedia({
+    xs: css`
+      position:fixed;
+      bottom: 0px;
+      margin-bottom: 0px;
+      width: 100%;
+      border-radius: 15px 15px 0px 0px;
+      box-shadow: 0px -2px 4px 0px black;
+    `,
     md: css`
+      border-radius: 0px;
       justify-content: flex-start;
-      margin-top: 32px;
+      margin-top: 0px;
       margin-left: auto;
       margin-right: auto;
       width: 100%;
       padding: 0 16px;
       max-width: 768px;
+      bottom:auto;
+      top:0px;
+      position: sticky;
+      box-shadow: black 0px 2px 0px 0px;
     `,
     lg: css`
       max-width: calc(100%);
       margin-top: 0px;
       padding-top: 10px;
-      box-shadow: black 0px 1px 1px 1px;
     `,
     xl: css`
       max-width: calc(100% *1);
@@ -45,6 +58,7 @@ MenuLogedWrapper.Left = styled.div`
   order: 1;
   ${breakpointsMedia({
     xs: css`
+        display: none;
         max-width: calc(100% *0.4);
         margin:0px
         justify-content: flex-start;
@@ -55,6 +69,7 @@ MenuLogedWrapper.Left = styled.div`
         }
     `,
     md: css`
+      display:block;
       order: initial;
       padding-right: 16px;
     `,
@@ -67,7 +82,6 @@ MenuLogedWrapper.Left = styled.div`
 MenuLogedWrapper.Central = styled.div`
   padding: 0;
   margin: 0;
-  order: 3;
   width: 100%;
   list-style: none;
   display: flex;
@@ -79,7 +93,16 @@ MenuLogedWrapper.Central = styled.div`
   padding: 12px;
   
   ${breakpointsMedia({
+    xs: css`
+      display: none;
+      ${({ searhClick }) => (searhClick === true ? css`display: block;` : css`display: none;`)};
+      form{ 
+        width:90%;
+        margin: auto;
+      }
+    `,
     md: css`
+      display: flex;
       max-width: calc(100% *0.5);
       justify-content: flex-end;
       flex: 1;
@@ -88,6 +111,10 @@ MenuLogedWrapper.Central = styled.div`
       margin: 0;
       padding-top: 0;
       padding-bottom: 0;
+      form{ 
+        width:60%;
+        margin: 0px;
+      }
     `,
     xl: css`
       max-width: calc(100% *0.6);
@@ -130,17 +157,17 @@ MenuLogedWrapper.Right = styled.div`
   justify-content: flex-end;
   ${breakpointsMedia({
     xs: css`
-      justify-content: flex-end;
-      order: 2;
+      width: 100%;
+      justify-content: center;
+      order: 1;
     `,
     sm: css`
       max-width: calc(100% *0.4);
       justify-content: flex-end;
-      order: 2;
     `,
     md: css`
       max-width: calc(100% *0.4);
-      order: initial;
+      order: 3;
       justify-content: center;
     `,
     xl: css`

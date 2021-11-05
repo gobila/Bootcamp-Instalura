@@ -18,7 +18,9 @@ const InfoImg = styled.img`
   })}
 `;
 
-export default function InforCard({ userPhoto, userName, userBio }) {
+export default function InforCard({
+  postLength, userPhoto, userName, userBio, followers, following,
+}) {
   return (
     <Grid.Row justifyContent="center" margin="0px" alignItems="center">
       {/* AVATAR */}
@@ -44,17 +46,17 @@ export default function InforCard({ userPhoto, userName, userBio }) {
       >
         <Grid.Row margin="0px">
           <Grid.Col value={{ xs: 6, md: 4 }}>
-            <Text tag="p" variant="titleXS" bold>100</Text>
+            <Text tag="p" variant="titleXS" bold>{postLength}</Text>
             <Text tag="p" variant="paragraph1" userInfor>Publicações</Text>
           </Grid.Col>
 
           <Grid.Col value={{ xs: 6, md: 4 }}>
-            <Text tag="p" variant="titleXS" bold>320</Text>
+            <Text tag="p" variant="titleXS" bold>{following}</Text>
             <Text tag="p" variant="paragraph1" userInfor>Seguindo</Text>
           </Grid.Col>
 
           <Grid.Col value={{ xs: 6, md: 4 }}>
-            <Text tag="p" variant="titleXS" bold>2000</Text>
+            <Text tag="p" variant="titleXS" bold>{followers}</Text>
             <Text tag="p" variant="paragraph1" userInfor>Seguidores</Text>
           </Grid.Col>
 

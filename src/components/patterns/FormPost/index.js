@@ -113,6 +113,7 @@ export default function FormPost({
             setStep('second');
           }}
           disabled={form.isFormDisabled}
+          variant="secondary.main"
         >
           Avançar
         </Button>
@@ -159,6 +160,7 @@ export default function FormPost({
         <Button
           type="submit"
           disabled={form.isFormDisabled}
+          variant="secondary.main"
         >
           Post
         </Button>

@@ -92,6 +92,9 @@ const ButtonWrapperIcon = styled.button`
     &:focus {
         opacity: .5;
     }
+    ${propsToStyle('display')}
+    ${propsToStyle('order')}
+    
 `;
 
 export function Button({
