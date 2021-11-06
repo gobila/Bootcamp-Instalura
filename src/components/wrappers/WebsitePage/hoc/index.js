@@ -23,6 +23,7 @@ export default function websitePageHOC(
         {...pageWrapperProps}
         {...props.pageWrapperProps}
         messages={props.messages}
+        userContext={props.userContext}
       >
         <PageComponet {...props} />
       </WebsitePageWrapper>

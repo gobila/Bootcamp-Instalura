@@ -57,9 +57,6 @@ export default function FormPost({
     },
   });
 
-  // console.log('photo', form.values.photoUrl);
-  // console.log('description', form.values.description);
-
   return (
     <>
       {step === 'first' && (
@@ -116,6 +113,7 @@ export default function FormPost({
             setStep('second');
           }}
           disabled={form.isFormDisabled}
+          variant="secondary.main"
         >
           Avançar
         </Button>
@@ -162,6 +160,7 @@ export default function FormPost({
         <Button
           type="submit"
           disabled={form.isFormDisabled}
+          variant="secondary.main"
         >
           Post
         </Button>

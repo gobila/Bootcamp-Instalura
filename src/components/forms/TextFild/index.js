@@ -6,6 +6,11 @@ import Text from '../../foundation/Text';
 const InputWrapper = styled.div`
   margin-bottom: 17px;
   ${function inputProps(props) {
+    if (props.search) {
+      return css`
+      margin-bottom: 0px;
+      `;
+    }
     if (props.previewPhoto) {
       return css`
         width: 100%;

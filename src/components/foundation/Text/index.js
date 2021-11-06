@@ -9,10 +9,35 @@ import { WebsitePageContext } from '../../wrappers/WebsitePage/context';
 
 export const TextStyleVariantsMap = {
   paragraph1: css`
-        font-size:${({ theme }) => theme.typographyVariants.paragraph1.fontSize};
-        font-weight:${({ theme }) => theme.typographyVariants.paragraph1.fontWeight};
-        line-height:${({ theme }) => theme.typographyVariants.paragraph1.lineHeight};
-    `,
+    ${({ theme }) => css`
+      font-size: ${theme.typographyVariants.paragraph1.fontSize};
+      font-weight: ${theme.typographyVariants.paragraph1.fontWeight};
+      line-height: ${theme.typographyVariants.paragraph1.lineHeight};
+    `}
+
+    ${function _userInfor({ userInfor }) {
+    if (userInfor) {
+      return (css`
+        ${({ theme }) => css`
+          font-size: ${theme.typographyVariants.smallestException.fontSize};
+          font-weight: ${theme.typographyVariants.smallestException.fontWeight};
+          line-height: ${theme.typographyVariants.smallestException.lineHeight};
+        `}
+        ${breakpointsMedia({
+          md: css`
+          ${({ theme }) => css`
+            font-size: ${theme.typographyVariants.paragraph1.fontSize};
+            font-weight: ${theme.typographyVariants.paragraph1.fontWeight};
+            line-height: ${theme.typographyVariants.paragraph1.lineHeight};
+          `}
+        `,
+        })}
+      `);
+    }
+    return '';
+  }
+}
+`,
   comments: css`
     font-size:${({ theme }) => theme.typographyVariants.comments.fontSize};
     font-weight:${({ theme }) => theme.typographyVariants.comments.fontWeight};
@@ -39,6 +64,23 @@ export const TextStyleVariantsMap = {
       `,
   })}
   `,
+  titleXS: css`
+  ${({ theme }) => css`
+    font-size: ${theme.typographyVariants.paragraph1.fontSize};
+    ${({ bold }) => (bold ? css`font-weight:bold` : css`font-weight:${theme.typographyVariants.paragraph1.fontWeight}`)};
+    /* font-weight: ${theme.typographyVariants.paragraph1.fontWeight}; */
+    line-height: ${theme.typographyVariants.paragraph1.lineHeight};
+  `}
+  ${breakpointsMedia({
+    md: css`
+      ${({ theme }) => css`
+        font-size: ${theme.typographyVariants.titleXS.fontSize};
+        ${(props) => (props.bold ? css`font-weight:bold` : css`font-weight:${theme.typographyVariants.paragraph1.fontWeight}`)};
+        line-height: ${theme.typographyVariants.titleXS.lineHeight};
+      `}
+    `,
+  })}
+`,
   subTitle: css`
   font-size:${({ theme }) => theme.typographyVariants.subTitle.fontSize};
   font-weight:${({ theme }) => theme.typographyVariants.subTitle.fontWeight};
@@ -62,7 +104,6 @@ export default function Text({
 }) {
   const websitePageContext = useContext(WebsitePageContext);
   const componentContent = cmsKey ? websitePageContext.getCMSContent(cmsKey) : children;
-
   // const componentContent = cmsKey
   //   ? websitePageContext.getCMSContent(cmsKey)
   //   : children;
