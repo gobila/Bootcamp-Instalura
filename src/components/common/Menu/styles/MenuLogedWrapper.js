@@ -158,12 +158,12 @@ MenuLogedWrapper.Right = styled.div`
   ${breakpointsMedia({
     xs: css`
       width: 100%;
-      justify-content: center;
+      justify-content: space-evenly;
       order: 1;
     `,
     sm: css`
-      max-width: calc(100% *0.4);
-      justify-content: flex-end;
+      max-width: calc(100% *1);
+      justify-content: space-evenly;
     `,
     md: css`
       max-width: calc(100% *0.4);
