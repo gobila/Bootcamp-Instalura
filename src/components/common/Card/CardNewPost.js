@@ -97,6 +97,7 @@ export function CardNewPost({
             className={filtro}
             src={image || 'https://place-hold.it/550/9c27b/fffff&text=%F0%9F%99%8E%E2%80%8D%E2%99%82%EF%B8%8F'}
             alt=""
+            style={{ width: '100%' }}
           />
         </Box>
         <Text

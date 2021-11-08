@@ -10,7 +10,7 @@ import { Box } from '../../foundation/layout/Box';
 import Text from '../../foundation/Text';
 import { filtros } from '../../../assets/filterList';
 
-const URLCheck = /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
+const URLCheck = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gm;
 const postSchema = yup.object().shape({
   photoUrl: yup.string().required('Insira uma URL valida!')
     .matches(URLCheck,
