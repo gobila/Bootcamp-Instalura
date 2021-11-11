@@ -11,7 +11,7 @@ export async function getServerSideProps(ctx) {
   if (hasActiveSession) {
     const session = await auth.getSession();
     const profilePage = await userService.getProfilePage(ctx);
-    const gitInfos = await userService.githubInfos('omariosouto');
+    const gitInfos = await userService.githubInfos(session.username);
     return {
       props: {
         userContext: {
