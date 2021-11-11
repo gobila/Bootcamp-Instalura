@@ -11,7 +11,8 @@ export const TextStyleVariantsMap = {
   paragraph1: css`
     ${({ theme }) => css`
       font-size: ${theme.typographyVariants.paragraph1.fontSize};
-      font-weight: ${theme.typographyVariants.paragraph1.fontWeight};
+      /* font-weight: ${theme.typographyVariants.paragraph1.fontWeight}; */
+      ${({ bold }) => (bold ? css`font-weight:bold` : css`font-weight:${theme.typographyVariants.paragraph1.fontWeight}`)};
       line-height: ${theme.typographyVariants.paragraph1.lineHeight};
     `}
 

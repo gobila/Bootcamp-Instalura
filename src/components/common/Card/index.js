@@ -97,21 +97,11 @@ export default function Card({
       <CardFooter>
         <Box display="flex" justifyContent="space-between">
           <Box display="flex" alignItems="center">
-            {/* LIKES */}
-            {/* <Button
-              icon
-              name="Curtidas"
-              data-imgId={imgId}
-              onClick={handleLikes}
-            >
-              <img src="/images/assets/heart1.png" alt="Curtidas" data-imgId={imgId} />
-            </Button> */}
             <ButtonLike
               liked={isLiked}
               name="Curtidas"
               data-imgId={imgId}
               imgId={imgId}
-              // onClick={() => handleLikes(imgId)}
               handleLike={() => handleLikes(imgId)}
             />
             { likes.length }

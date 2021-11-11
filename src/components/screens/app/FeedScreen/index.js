@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import Card from '../../../common/Card';
+import { FriendBar } from '../../../common/FriendBar';
 import { Box } from '../../../foundation/layout/Box';
 import Text from '../../../foundation/Text';
 
@@ -41,17 +42,18 @@ export default function FeedScreen({ userContext }) {
   }, []);
 
   return (
-    <Box loged>
-      {loadPosts.length === 0
+    <Box loged display="flex" justifyContent="center">
+      <Box>
+        {loadPosts.length === 0
       && (
         <Box display="flex" flexDirection="column" alignItems="center">
           <img src="/images/assets/loading.webp" alt="Carregando" />
           <Text tag="h3" variant="subTitle">Estamos buscando novas fofocas para você</Text>
         </Box>
       )}
-      {loadPosts.map((i) => (
-        <div key={i._id}>
-          {i.length !== 0
+        {loadPosts.map((i) => (
+          <div key={i._id}>
+            {i.length !== 0
           && (
           <Card
             imgId={i._id}
@@ -63,15 +65,19 @@ export default function FeedScreen({ userContext }) {
             allLikes={i.likes}
           />
           )}
-        </div>
-      ))}
-      {loadPosts.length !== posts.length
+          </div>
+        ))}
+        {loadPosts.length !== posts.length
       && (
         <Box display="flex" flexDirection="column" alignItems="center" id="sentinela">
-          <img src="/images/assets/loading.webp" alt="Carregando" />
+          <img src="/images/assets/loading.webp" alt="Carregando" style={{ width: '100%' }} />
           <Text tag="h3" variant="subTitle">Estamos buscando novas fofocas para você</Text>
         </Box>
       )}
+      </Box>
+      <FriendBar
+        gitInfo={gitInfo}
+      />
     </Box>
   );
 }
