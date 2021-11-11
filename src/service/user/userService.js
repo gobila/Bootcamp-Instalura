@@ -13,7 +13,7 @@ const BASE_URL = isStagingEnv
 
 export const userService = {
   async getProfilePage(ctx) {
-    const url = `${BASE_URL}/api/users/posts/?per_page=10&order=DESC`;
+    const url = `${BASE_URL}/api/users/posts/`;
     try {
       const token = await authService(ctx).getToken();
       const response = await HTTPClient(url, {

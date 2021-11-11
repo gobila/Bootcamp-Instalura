@@ -24,7 +24,7 @@ export default function FormPost({
   const router = useRouter();
   const initialValues = {
     photoUrl: '',
-    description: '',
+    description: 'Descição',
     filter: '',
   };
   // =================MEXI================================//

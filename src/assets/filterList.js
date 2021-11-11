@@ -1,9 +1,11 @@
 export const filtros = [
   {
+    name: 'Nenhum',
+    css: 'none',
+  }, {
     name: '1977',
     css: 'filter-1977',
-  },
-  {
+  }, {
     name: 'Aden',
     css: 'filter-aden',
   },
