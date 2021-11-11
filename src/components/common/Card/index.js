@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Dots } from '../../../assets/dots';
+import { userService } from '../../../service/user/userService';
 import { Box } from '../../foundation/layout/Box';
 import Text from '../../foundation/Text';
-import { Button } from '../Button';
+import { Button, ButtonLike } from '../Button';
 
 export { CardNewPost } from './CardNewPost';
 
@@ -50,9 +51,30 @@ const CardFooter = styled(Box)`
 `;
 
 export default function Card({
-  Post, UserName, likes, filter, description, avatarURL,
+  Post, user, allLikes, filter, description, avatarURL, imgId,
 }) {
-  // const avatar = 'https://upload.wikimedia.org/wikipedia/commons/c/c0/Nicolas_Cage_Deauville_2013.jpg';
+  // sistema de likes
+  const [likes, setLikes] = useState([...allLikes]);
+  const [isLiked, setIsLiked] = useState(true);
+  const handleLikes = async (e) => {
+    const response = await userService.Liked(e);
+    if (response) {
+      setLikes(response.likes ?? []);
+    }
+    if (!response) {
+      setLikes([]);
+    }
+  };
+
+  function hasLiked(postLiked) {
+    const Liked = postLiked.some((elem) => elem.user === user.id);
+    return Liked;
+  }
+  // console.log('likes', likes);
+
+  useEffect(() => {
+    setIsLiked(hasLiked(likes));
+  }, [likes]);
   return (
     <CardWrapper>
       <CardHead>
@@ -60,13 +82,12 @@ export default function Card({
           display="flex"
           alignItems="center"
         >
-          <img src={avatarURL} alt={`Avatar do ${UserName}`} />
+          <img src={avatarURL} alt={`Avatar do ${user.username}`} />
           <Text tag="p" variant="paragraph1">
-            {UserName}
+            {user.username}
           </Text>
         </Box>
         <Button icon>
-          {/* <img src="/images/assets/iconMoreLight.svg" alt="" /> */}
           <Dots />
         </Button>
       </CardHead>
@@ -76,24 +97,40 @@ export default function Card({
       <CardFooter>
         <Box display="flex" justifyContent="space-between">
           <Box display="flex" alignItems="center">
-            <Button icon>
-              <img src="/images/assets/heart1.png" alt="Curtidas" />
-            </Button>
-            {likes}
+            {/* LIKES */}
+            {/* <Button
+              icon
+              name="Curtidas"
+              data-imgId={imgId}
+              onClick={handleLikes}
+            >
+              <img src="/images/assets/heart1.png" alt="Curtidas" data-imgId={imgId} />
+            </Button> */}
+            <ButtonLike
+              liked={isLiked}
+              name="Curtidas"
+              data-imgId={imgId}
+              imgId={imgId}
+              // onClick={() => handleLikes(imgId)}
+              handleLike={() => handleLikes(imgId)}
+            />
+            { likes.length }
+            {/* COMMENTS */}
             <Button icon>
               <img src="/images/assets/message-circle.png" alt="comentarios" />
             </Button>
-            {likes}
+            {/* SHARE */}
             <Button icon>
               <img src="/images/assets/send.png" alt="compartilhar" />
             </Button>
           </Box>
+          {/* SAVE */}
           <Button icon>
             <img src="/images/assets/bookmark.png" alt="salvar" />
           </Button>
         </Box>
         <Box display="flex" alignItems="center">
-          <img src={avatarURL} alt={`Avatar do ${UserName}`} />
+          <img src={avatarURL} alt={`Avatar do ${user.username}`} />
           <Text tag="p" variant="comments">
             So excited to play this new...
           </Text>

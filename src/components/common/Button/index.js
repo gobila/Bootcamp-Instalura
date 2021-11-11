@@ -7,6 +7,8 @@ import { breakpointsMedia } from '../../theme/utils/breakpointsMedia';
 import { propsToStyle } from '../../theme/utils/propsToStyle';
 import Link from '../Link';
 
+export { ButtonLike } from './ButtonLike';
+
 const ButtonGhost = css`
     color: ${(props) => get(props.theme, `colors.${props.variant}.color`)};
     background-color: transparent;

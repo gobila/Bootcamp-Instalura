@@ -50,6 +50,29 @@ export const userService = {
     }
   },
 
+  // Like Post
+  async Liked(postId) {
+    const url = `${BASE_URL}/api/posts/${postId}/like`;
+    try {
+      const token = await authService().getToken();
+      const response = await HTTPClient(url, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: {},
+      });
+      if (response.data) {
+        return response.data;
+      }
+      return undefined;
+    } catch (err) {
+      // throw new Error('Não foi possivel enviar o like', err);
+      // console.error(err);
+      return undefined;
+    }
+  },
+
   // GitHub infos
   async githubInfos(user) {
     const url = `https://api.github.com/users/${user}`;

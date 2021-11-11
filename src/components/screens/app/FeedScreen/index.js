@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import Card from '../../../common/Card';
 import { Box } from '../../../foundation/layout/Box';
@@ -8,7 +9,6 @@ export default function FeedScreen({ userContext }) {
   const { gitInfo } = userContext;
   const { user } = userContext;
   const { posts } = userContext;
-
   const totalPosts = posts.length - 1;
   const [currentPage, setCurrentPage] = useState(1);
   const [loadPosts, setLoadPosts] = useState([]);
@@ -42,7 +42,6 @@ export default function FeedScreen({ userContext }) {
 
   return (
     <Box loged>
-      {currentPage}
       {loadPosts.length === 0
       && (
         <Box display="flex" flexDirection="column" alignItems="center">
@@ -51,17 +50,17 @@ export default function FeedScreen({ userContext }) {
         </Box>
       )}
       {loadPosts.map((i) => (
-        // eslint-disable-next-line no-underscore-dangle
         <div key={i._id}>
           {i.length !== 0
           && (
           <Card
+            imgId={i._id}
             avatarURL={gitInfo.avatar_url}
             description={i.description}
             filter={i.filter}
             Post={i.photoUrl}
-            UserName={user.username}
-            likes={user.totalLikes}
+            user={user}
+            allLikes={i.likes}
           />
           )}
         </div>
