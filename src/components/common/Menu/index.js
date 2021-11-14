@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 import { MenuWrapper, MenuLogedWrapper } from './styles/MenuWrapper';
 import Logo from '../../../assets/Logo';
 import { Button } from '../Button';
 import Text from '../../foundation/Text';
 import TextField from '../../forms/TextFild';
 import PerfilImg from '../PerfilImg';
+import { Box } from '../../foundation/layout/Box';
+import { loginService } from '../../../service/login/loginServie';
 
 export default function Menu({ onCadastrarClick }) {
   const link = [{
@@ -67,6 +70,12 @@ Menu.propTypes = {
 // =====================MENU LOGADO ================================ //
 export function MenuLoged({ onNewPostClick, avatar }) {
   const [searhClick, setSearhClick] = useState(false);
+  const redirect = useRouter();
+  // Logout
+  const handleLogout = async () => {
+    await loginService.logout(null);
+    redirect.push('/');
+  };
 
   return (
     <MenuLogedWrapper>
@@ -106,11 +115,22 @@ export function MenuLoged({ onNewPostClick, avatar }) {
           <img src="/images/assets/heart.png" alt="Curtidas" />
         </Button>
         {/* Botao de Profile */}
-        <Button icon href="profile" order={{ xs: '5', md: '4' }}>
-          <PerfilImg
-            avatar={avatar}
-          />
-        </Button>
+        <Box order={{ xs: '5', md: '4' }} dropMenu>
+          <Button icon href="profile">
+            <PerfilImg
+              avatar={avatar}
+            />
+          </Button>
+          <Box className="dropMenuItem">
+            <Button icon>
+              <Text variant="paragraph1">Perfil</Text>
+            </Button>
+
+            <Button icon>
+              <Text variant="paragraph1" onClick={handleLogout}>Logout</Text>
+            </Button>
+          </Box>
+        </Box>
       </MenuLogedWrapper.Right>
     </MenuLogedWrapper>
   );
