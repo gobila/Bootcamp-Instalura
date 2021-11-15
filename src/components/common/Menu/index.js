@@ -94,7 +94,7 @@ export function MenuLoged({ onNewPostClick, avatar }) {
       {/* login/cadastro */}
       <MenuLogedWrapper.Right>
         {/* Novo Post */}
-        <Button icon onClick={onNewPostClick} order={{ xs: '3', md: '1' }}>
+        <Button icon onClick={onNewPostClick} order={{ xs: '3', md: '1' }} id="newPost">
           <img src="/images/assets/postIcon.png" alt="Novo Post" />
         </Button>
         {/* Botao de pesquisa (apenas no mobile) */}

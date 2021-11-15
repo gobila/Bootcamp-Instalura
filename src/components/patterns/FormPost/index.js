@@ -96,6 +96,7 @@ export default function FormPost({
           </Box>
           <Button
             type="submit"
+            id="preview"
             variant="secondary.main"
             disabled={form.isFormDisabled}
             style={{ borderRadius: '0px 9px 9px 0px', width: '10%' }}
