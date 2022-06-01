@@ -20,7 +20,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.0.2",
     "commitizen": "^4.2.4",
-    "framer-motion": "^5.2.0",
+    "framer-motion": "^6.3.6",
     "graphql": "^15.7.2",
     "graphql-request": "^3.5.0",
     "jest": "^27.3.1",
