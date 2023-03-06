@@ -19,7 +19,7 @@
     "@crello/react-lottie": "0.0.11",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.0.2",
-    "commitizen": "^4.2.4",
+    "commitizen": "^4.3.0",
     "framer-motion": "^5.2.0",
     "graphql": "^15.7.2",
     "graphql-request": "^3.5.0",
